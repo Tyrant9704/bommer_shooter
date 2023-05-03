@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://nwqbl5xembwn"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_x3mfy"]
+[ext_resource type="PackedScene" uid="uid://cssv66son3r18" path="res://scenes/ak_74_su.tscn" id="3_0g1i1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wy1mh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_nl8cv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hdqaq"]
+height = 2.41269
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_x3mfy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.602726, 0, 0, 0, 1, 0, 0, 0, 0.688496, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_wy1mh")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.392215, 0, 0, 0, 0.453884, 0, 0, 0, 0.404198, 0, 0.146476, 0)
+mesh = SubResource("BoxMesh_nl8cv")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.996515, -0.0105052)
+shape = SubResource("CapsuleShape3D_hdqaq")
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.03817, 0)
+
+[node name="Camera3D" type="Camera3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0448833, -0.0755515)
+
+[node name="ak74-su" parent="head/Camera3D" instance=ExtResource("3_0g1i1")]
+transform = Transform3D(1, 0, 0, 0, 0.998971, -0.045363, 0, 0.045363, 0.998971, 0.742736, -2.08305, 0.0755515)

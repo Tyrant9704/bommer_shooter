@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw1ftw2yf13w1"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_e55r6"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u3iar"]
+
+[node name="dummy" type="RigidBody3D"]
+collision_mask = 17
+can_sleep = false
+freeze_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4373, 0)
+mesh = SubResource("CapsuleMesh_e55r6")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4373, 0)
+shape = SubResource("CapsuleShape3D_u3iar")

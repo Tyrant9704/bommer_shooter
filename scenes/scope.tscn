@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnoce5joxpw4r"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a53nh"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gychl"]
+resource_local_to_scene = true
+transparency = 1
+disable_ambient_light = true
+albedo_texture = SubResource("ViewportTexture_a53nh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_qx0ks"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_l4cep"]
+
+[node name="scope" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23695, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.124903, 0.494948, -0.0486189)
+material_override = SubResource("StandardMaterial3D_gychl")
+mesh = SubResource("QuadMesh_qx0ks")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(500, 500)
+render_target_update_mode = 4
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.423728, 1.3755, -3.04373)
+current = true
+fov = 20.0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.1174, 0.121317, 0.499707, -1.61159)
+mesh = SubResource("BoxMesh_l4cep")

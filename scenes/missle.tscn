@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://scripts/missle.gd" id="1_75d1m"]
+[ext_resource type="ArrayMesh" uid="uid://by7kex33avknc" path="res://model/russian_rocket.obj" id="1_uywo1"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t3jqa"]
+
+[node name="missle" type="RigidBody3D"]
+gravity_scale = 0.0
+script = ExtResource("1_75d1m")
+
+[node name="RussianRocket" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.503858, 0, 1.48131)
+mesh = ExtResource("1_uywo1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-3.49691e-08, -0.8, 0, 0.8, -3.49691e-08, 0, 0, 0, 0.8, 0.823586, 1.26678, 1.20113)
+shape = SubResource("CapsuleShape3D_t3jqa")
+
+[node name="seeker" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71352, 1.22775, 1.2416)
+target_position = Vector3(800, 0, 0)
+collision_mask = 16
+
+[node name="Timer" type="Timer" parent="."]

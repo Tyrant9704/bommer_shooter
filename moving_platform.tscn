@@ -1,0 +1,92 @@
+[gd_scene load_steps=12 format=3 uid="uid://c58b4qmr02wc"]
+
+[ext_resource type="Texture2D" uid="uid://cxchffji0l3d1" path="res://assets/textures/Concrete_Wall_007_basecolor.jpg" id="1_k47si"]
+[ext_resource type="Texture2D" uid="uid://c4hr0matagwev" path="res://assets/textures/Concrete_Wall_007_normal.jpg" id="2_rbxpk"]
+[ext_resource type="Texture2D" uid="uid://bu1r6h8xp825u" path="res://assets/textures/Concrete_Wall_007_roughness.jpg" id="3_xsl00"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fdgw2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wouk3"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_slid5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11qrt"]
+albedo_texture = ExtResource("1_k47si")
+roughness = 0.82
+roughness_texture = ExtResource("3_xsl00")
+normal_enabled = true
+normal_texture = ExtResource("2_rbxpk")
+
+[sub_resource type="Curve3D" id="Curve3D_n5fal"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.0145965, -0.00822759, 0.000934269, 0, 0, 0, 0, 0, 0, 12, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="Animation" id="Animation_q1i64"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_j3nj7"]
+resource_name = "move_platform"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Path3D/PathFollow3D:progress_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kfq8d"]
+_data = {
+"RESET": SubResource("Animation_q1i64"),
+"move_platform": SubResource("Animation_j3nj7")
+}
+
+[node name="MovingPlatform" type="Node3D"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+transform = Transform3D(-7.80066e-05, -0.000686468, 1, 0, 1, 0.000686468, -1, 5.3549e-08, -7.80066e-05, 0.0145965, -0.00822759, 0.000934269)
+physics_material_override = SubResource("PhysicsMaterial_fdgw2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(2, 0, 0, 0, 0.2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_wouk3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D/CollisionShape3D"]
+mesh = SubResource("BoxMesh_slid5")
+surface_material_override/0 = SubResource("StandardMaterial3D_11qrt")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_n5fal")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-7.80066e-05, -0.000686468, 1, 0, 1, 0.000686468, -1, 5.3549e-08, -7.80066e-05, 0.0145965, -0.00822759, 0.000934269)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Path3D/PathFollow3D"]
+remote_path = NodePath("../../../AnimatableBody3D")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "move_platform"
+libraries = {
+"": SubResource("AnimationLibrary_kfq8d")
+}

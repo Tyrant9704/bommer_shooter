@@ -1,0 +1,151 @@
+[gd_scene load_steps=10 format=3 uid="uid://b5n3nj7nyedh"]
+
+[ext_resource type="Script" path="res://player_1.gd" id="1_jiwg8"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w7i0t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rn64o"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0t6hj"]
+
+[sub_resource type="Animation" id="Animation_n10k0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.71695, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../MeshInstance3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bltsd"]
+resource_name = "head_bob"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.15, 0.2), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0u02x"]
+resource_name = "head_bob_sprint"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.4, 0, 0), Vector3(0, 0.4, 0), Vector3(0.4, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sojvu"]
+_data = {
+"RESET": SubResource("Animation_n10k0"),
+"head_bob": SubResource("Animation_bltsd"),
+"head_bob_sprint": SubResource("Animation_0u02x")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_ojmw0"]
+font_size = 30
+font_color = Color(0.560784, 1, 0.647059, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_jiwg8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_w7i0t")
+surface_material_override/0 = SubResource("StandardMaterial3D_rn64o")
+
+[node name="Player_collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_0t6hj")
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71695, 0)
+
+[node name="Camera3D" type="Camera3D" parent="head"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="head/Camera3D"]
+libraries = {
+"": SubResource("AnimationLibrary_sojvu")
+}
+
+[node name="Control" type="Control" parent="head/Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 15.0
+offset_right = -3.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="jetpack_label" type="Label" parent="head/Camera3D/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 120.0
+grow_vertical = 0
+text = "Jetpack: 100%"
+label_settings = SubResource("LabelSettings_ojmw0")
+
+[node name="ColorRect" type="ColorRect" parent="head/Camera3D/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ladder_raycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0390505, -0.999237, 0, 0.999237, -0.0390505, 0, -0.0145242, -0.0612492)
