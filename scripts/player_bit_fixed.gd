@@ -18,16 +18,9 @@ const MAX_WALLJUMPS = 2
 const MAX_WALLJUMPS_SPRINTING = 5
 var walljumps = 2
 
-#shooting sfuff
-var next_shot = true
-var reloaded = true
-var max_ammo = 35
-var mag = 7
-const mag_size = 7
 
 # is changing depending from the player state
 var player_state = 'idle'
-var aim_state = 'not_aim'
 var player_pos = 'stand'
 
 #const player_height_standing = 2
@@ -57,12 +50,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 4 # mu
 
 @onready var neck := $head
 @onready var camera := $head/Camera3D
-@onready var anim = $AnimationPlayer
 @onready var player_capsule = $Player_collision
 @onready var ladder = $"../ladder"
 @onready var ladder_raycast = $ladder_raycast
 @onready var bullet_origin = $head/Camera3D/bullet_origin
-@onready var bullet_hole = preload("res://scenes/bullet_hole.tscn")
 #ui ? ?? 
 @onready var jetpackLabel = $head/Camera3D/Control/jetpack_label
 @onready var ammo_count = $head/Camera3D/Control/ammo_count
@@ -94,29 +85,10 @@ func _input(event):
 
 
 func _process(delta):
-#----- whatever the fuck is this----
-	var anim_state = player_state + player_pos + aim_state
-	
-	$AnimationTree.set("parameters/Transition/transition_request", anim_state )
-	
-	
-	#for shooting stuff & shit
-	if Input.is_action_just_pressed('jetpack') and reloaded:
-		reloaded = false
-		print(reloaded)
-		$AnimationPlayer.play("reload")
-		if reloaded == false:
-			mag = mag_size
-			max_ammo -= mag_size
+	#anim_handler
+	global_script.player_pos = player_pos
+	global_script.player_state = player_state
 		
-		
-	if Input.is_action_just_pressed("LMB") and next_shot:
-		mag -= 1
-		if mag >= 0:
-			next_shot = true
-		else:
-			next_shot = false
-			
 		# Handle sprint & shit
 	if speed == 10:
 		player_state = 'walk'
@@ -149,17 +121,11 @@ func _process(delta):
 	
 		#mouse zoom
 	if Input.is_action_pressed("RMB"):
-		aim_state = 'aim'
 		camera.fov = ZOOM_FOV
-	else:
-		aim_state = 'not_aim'
-	if Input.is_action_just_released("RMB"):
-		aim_state = 'not_aim'
-			
 
 #----jetpack & ammo-----
 	jetpackLabel.set_text("jetpack: " + var_to_str(floor(currentJetpackEnergy)) + " %")
-	ammo_count.set_text('Ammo' + ' ' + var_to_str((max(0,mag)))+ '/' + var_to_str(max(0, max_ammo)))
+	#ammo_count.set_text('Ammo' + ' ' + var_to_str((max(0,mag)))+ '/' + var_to_str(max(0, max_ammo)))
 	
 	if Input.is_action_pressed("jump"):
 		if not is_on_floor():
@@ -245,29 +211,4 @@ func _process(delta):
 #anoher whatever the fuck raycast
 	#raycast origin
 	bullet_origin.transform.origin = $head/Camera3D.transform.origin
-	#rest of it
-	if reloaded and next_shot:
-		if Input.is_action_just_pressed("LMB"):
-			var collider = bullet_origin.get_collider()
-			if bullet_origin.get_collision_mask_value(5):
-				if bullet_origin.is_colliding():
-					$AnimationPlayer.play("shoot")
-					$"head/Camera3D/arms&shit/gun/CPUParticles3D".restart()
-					$"head/Camera3D/arms&shit/gun/CPUParticles3D".emitting = true
-					next_shot = false
-					if collider is RigidBody3D:
-						collider.apply_central_impulse(self.global_transform.basis * effect)
-					if collider and 'enemy' in collider.get_groups():
-						collider._health(20)
-						pass
-					else:
-						var b_hole = bullet_hole.instantiate()
-						collider.add_child(b_hole)
-						b_hole.global_transform.origin = bullet_origin.get_collision_point()
-						b_hole.look_at(bullet_origin.get_collision_point() + bullet_origin.get_collision_normal(), Vector3.UP)
-				
 
-
-func _on_animation_player_animation_finished(reload):
-	next_shot = true
-	reloaded = true

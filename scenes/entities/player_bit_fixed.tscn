@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://b086gn4fodijm"]
+
+[ext_resource type="Script" path="res://scripts/player_bit_fixed.gd" id="1_okjq5"]
+[ext_resource type="PackedScene" uid="uid://bqrdp8t3g0bfw" path="res://scenes/guns/m_1911__pistol.tscn" id="2_kdd0v"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_w7i0t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rn64o"]
+albedo_color = Color(1, 0, 1, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0t6hj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ojmw0"]
+font_size = 30
+font_color = Color(0.560784, 1, 0.647059, 1)
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_okjq5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_w7i0t")
+surface_material_override/0 = SubResource("StandardMaterial3D_rn64o")
+
+[node name="Player_collision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_0t6hj")
+
+[node name="head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71695, 0)
+
+[node name="Camera3D" type="Camera3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0874723, 0.150263, -0.288903)
+current = true
+
+[node name="Control" type="Control" parent="head/Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 15.0
+offset_right = -3.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="jetpack_label" type="Label" parent="head/Camera3D/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+offset_right = 120.0
+grow_vertical = 0
+text = "Jetpack: 100%"
+label_settings = SubResource("LabelSettings_ojmw0")
+
+[node name="ammo_count" type="Label" parent="head/Camera3D/Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 925.0
+offset_top = -60.0
+offset_right = 1124.0
+offset_bottom = -15.0
+grow_vertical = 0
+text = "Ammo 7/35"
+label_settings = SubResource("LabelSettings_ojmw0")
+
+[node name="ColorRect" type="ColorRect" parent="head/Camera3D/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="bullet_origin" type="RayCast3D" parent="head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0120677, 0.0230621, 0)
+target_position = Vector3(0, 0, -250)
+collision_mask = 25
+
+[node name="joint(do_not_remove)" type="Marker3D" parent="head/Camera3D"]
+transform = Transform3D(0.999799, 0, -0.0200699, 0, 1, 0, 0.0200699, 0, 0.999799, 9.23574e-05, 0.00172186, -0.16896)
+metadata/_edit_lock_ = true
+
+[node name="M1911 _pistol" parent="head/Camera3D/joint(do_not_remove)" instance=ExtResource("2_kdd0v")]
+
+[node name="ladder_raycast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.0390505, -0.999237, 0, 0.999237, -0.0390505, 0, -0.0145242, -0.0612492)
+collision_mask = 24
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+mix_target = 1

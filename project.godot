@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="first_shooter"
-run/main_scene="res://first_level.tscn"
+run/main_scene="res://scenes/env/first_level.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+global_script="*res://scripts/global_handler.gd"
 
 [input]
 

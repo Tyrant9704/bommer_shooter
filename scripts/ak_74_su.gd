@@ -18,7 +18,7 @@ var allow_next = true
 
 
 func _ready():
-	pass 
+	$Scope
 
 func _process(delta):
 	fire()

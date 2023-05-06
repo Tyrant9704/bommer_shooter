@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcs4mxg3vn8q6"]
+[gd_scene load_steps=6 format=3 uid="uid://bdspws4pwrxep"]
 
-[ext_resource type="Texture2D" uid="uid://cqbv5g47l4i2k" path="res://googly eyes.png" id="1_fs1w8"]
 [ext_resource type="Script" path="res://scripts/tic_tac_enemy.gd" id="1_hd071"]
+[ext_resource type="Texture2D" uid="uid://cqbv5g47l4i2k" path="res://assets/googly eyes.png" id="2_f8j80"]
 [ext_resource type="AudioStream" uid="uid://b6jfqqu60jrj8" path="res://assets/audio/monster-growl-140377.mp3" id="3_yiacb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ittlp"]
@@ -18,7 +18,7 @@ mesh = SubResource("CapsuleMesh_ittlp")
 
 [node name="googly_eyes" type="Sprite3D" parent="tic_tac"]
 transform = Transform3D(0.241, 0, 0, 0, 0.241, 0, 0, 0, 0.241, 0, 0.539801, 0.522039)
-texture = ExtResource("1_fs1w8")
+texture = ExtResource("2_f8j80")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_i061n")
