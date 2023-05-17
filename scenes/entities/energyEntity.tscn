@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://btydxl7msoyq7"]
+
+[ext_resource type="Texture2D" uid="uid://det22w03f0fg4" path="res://assets/textures/particles/lighgtning3.png" id="1_mg801"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hia74"]
+radius = 0.33
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsapm"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_mg801")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_vgr6x"]
+offsets = PackedFloat32Array(0.185937, 0.482812, 0.701563)
+colors = PackedColorArray(0.252409, 0.0374013, 0.579735, 1, 0.542736, 0.449525, 0.996461, 1, 0.399095, 0.100361, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qycx1"]
+gradient = SubResource("Gradient_vgr6x")
+
+[sub_resource type="Curve" id="Curve_k2pgq"]
+_data = [Vector2(0, 0.766871), 0.0, 0.0, 0, 0, Vector2(0.0950292, 1), 0.0, 0.0, 0, 0, Vector2(0.546784, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.736196), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_x04fl"]
+curve = SubResource("Curve_k2pgq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pfxlc"]
+emission_shape = 1
+emission_sphere_radius = 0.2
+gravity = Vector3(0, 0, 0)
+angular_velocity_min = 10.0
+angular_velocity_max = 100.0
+angle_max = 360.0
+scale_min = 0.2
+scale_curve = SubResource("CurveTexture_x04fl")
+color_ramp = SubResource("GradientTexture1D_qycx1")
+
+[sub_resource type="QuadMesh" id="QuadMesh_av1uu"]
+
+[node name="energyEntity" type="RigidBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_hia74")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_xsapm")
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_pfxlc")
+draw_pass_1 = SubResource("QuadMesh_av1uu")
