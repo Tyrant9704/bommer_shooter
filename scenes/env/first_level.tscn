@@ -994,15 +994,15 @@ surface_material_override/0 = SubResource("StandardMaterial3D_wsoue")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="barrels/oli_barrel4/StaticBody3D"]
 shape = SubResource("CylinderShape3D_2om8o")
 
-[node name="Player" parent="." instance=ExtResource("25_5xfrb")]
-
 [node name="dummy" parent="." instance=ExtResource("26_6sxmg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.35489, 0, -5.40781)
 
 [node name="tic_tac_enemy" parent="." instance=ExtResource("27_ee11t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07278, 0, -6.7139)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07278, 2.18607, -6.7139)
 
 [node name="tic_tac_enemy2" parent="." instance=ExtResource("27_ee11t")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18506, -2.38419e-07, -5.73368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18506, 3.28872, -5.73368)
+
+[node name="Player" parent="." instance=ExtResource("25_5xfrb")]
 
 [editable path="MovingPlatform2"]

@@ -1,0 +1,13 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=3 uid="uid://drb7xtm0bf7b2"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_ghuko"]
+resource_name = "Reverb"
+room_size = 0.0
+damping = 0.05
+spread = 0.0
+dry = 0.14
+wet = 0.1
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectReverb_ghuko")
+bus/0/effect/0/enabled = false

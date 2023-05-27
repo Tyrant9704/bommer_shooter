@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsjsm58hj06ce"]
+[gd_scene load_steps=6 format=3 uid="uid://dsjsm58hj06ce"]
 
 [ext_resource type="Script" path="res://scripts/player_bit_fixed.gd" id="1_63tbi"]
-[ext_resource type="PackedScene" uid="uid://bqrdp8t3g0bfw" path="res://scenes/guns/m_1911__pistol.tscn" id="2_2x7dt"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w7i0t"]
 
@@ -19,6 +18,7 @@ script = ExtResource("1_63tbi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
 mesh = SubResource("CapsuleMesh_w7i0t")
 surface_material_override/0 = SubResource("StandardMaterial3D_rn64o")
 
@@ -87,10 +87,8 @@ target_position = Vector3(0, 0, -250)
 collision_mask = 25
 
 [node name="joint(do_not_remove)" type="Marker3D" parent="head/Camera3D"]
-transform = Transform3D(0.999799, 0, -0.0200699, 0, 1, 0, 0.0200699, 0, 0.999799, 9.23574e-05, 0.00172186, -0.16896)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -1.08, 0)
 metadata/_edit_lock_ = true
-
-[node name="M1911 _pistol" parent="head/Camera3D/joint(do_not_remove)" instance=ExtResource("2_2x7dt")]
 
 [node name="ladder_raycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0390505, -0.999237, 0, 0.999237, -0.0390505, 0, -0.0145242, -0.0612492)

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4whxfl4wdark"]
+
+[ext_resource type="Script" path="res://scenes/guns/weapon_2.gd" id="1_c7y5b"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5odvq"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_81htq"]
+material = SubResource("StandardMaterial3D_5odvq")
+
+[node name="weapon_2" type="Node3D"]
+script = ExtResource("1_c7y5b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.126316, 0, 0, 0, 1, 0, 0, 0, 0.114679, 0, 0, 0)
+mesh = SubResource("BoxMesh_81htq")

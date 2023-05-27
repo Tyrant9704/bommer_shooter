@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var raycast = $"M1911-handgun/raycast"
 var effect = Vector3(0, 10, 10)
-@onready var hole = preload("res://scenes/bullet_hole.tscn")
+@onready var hole = preload("res://scenes/env/bullet_hole.tscn")
 @export var hip = Vector3(0.578, -0.513, -0.397)
 @export var hip_recoil = Vector3(0.578, -0.564, -0.322)
 @export var aim = Vector3(0.036, -0.324, -0.397)

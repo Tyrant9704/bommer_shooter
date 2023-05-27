@@ -17,7 +17,12 @@ var aim_state = 'not_aim'
 
 @onready var bullet_origin = get_parent().get_node("../bullet_origin")
 
+# we should probably move it to some ui controller in the future
+@onready var ammoCountLabel = $"../../Control/ammo_count"
 
+
+func updateAmmoLabel():
+	ammoCountLabel.set_text("Ammo " + var_to_str(mag) + ' / ' + var_to_str(max_ammo))
 
 
 func _ready():
@@ -26,24 +31,43 @@ func _ready():
 
 func _process(delta):
 	
+	# self explainatory		
+	updateAmmoLabel()
 	
 #anim handler
 	var anim_state = global_script.player_state + '_' + global_script.player_pos + '_' + aim_state
 	$AnimationTree.set('parameters/Transition/transition_request', anim_state )
 	#for shooting stuff & shit
-	if Input.is_action_just_pressed('jetpack') and reloaded:
-		reloaded = false
-		print(reloaded)
-		$AnimationPlayer.play("m1911_anims/reload")
-		if reloaded == false:
-			mag = mag_size
-			max_ammo -= mag_size
+	
+	if Input.is_action_just_pressed('reload') and reloaded:
+		# prevent reloading when mag is full or no ammo left
+		if mag == mag_size or max_ammo <= 0:
+			return
 			
+		$AnimationPlayer.play("m1911_anims/reload")
+		reloaded = false
+		#print(reloaded)
+		
+		# lets calculate how many bullets the mag is missing and then...		
+#		bullets to load = max mag size - current mag bullets
+		var bulletsToLoad = mag_size - mag
+		
+		if reloaded == false:
+			#mag = mag_size
+			#max_ammo -= mag_size
+			
+			if max_ammo >= bulletsToLoad:
+				mag += bulletsToLoad
+				max_ammo -= bulletsToLoad
+			else:
+				mag += max_ammo
+				max_ammo = 0
+		
 		
 		
 	if Input.is_action_just_pressed("LMB") and next_shot:
-		mag -= 1
-		if mag >= 0:
+		if mag > 0:
+			mag -= 1
 			next_shot = true
 		else:
 			next_shot = false
@@ -52,18 +76,23 @@ func _process(delta):
 		aim_state = 'aim'
 	else:
 		aim_state = 'not_aim'
-	if Input.is_action_just_released("RMB"):
-		aim_state = 'not_aim'	
+		
+#	if Input.is_action_just_released("RMB"):
+#		aim_state = 'not_aim'	
 
 	if reloaded and next_shot:
 		if Input.is_action_just_pressed("LMB"):
 			var collider = bullet_origin.get_collider()
+			# animation moved up here, because otherwise shooting air is not animated
+			$AnimationPlayer.play("m1911_anims/fire_last")
+			$"arms&shit/gun/CPUParticles3D".restart()
+			$"arms&shit/gun/CPUParticles3D".emitting = true
+			
+			next_shot = false
+			
 			if bullet_origin.get_collision_mask_value(5):
 				if bullet_origin.is_colliding():
-					$AnimationPlayer.play("m1911_anims/shoot")
-					$"arms&shit/gun/CPUParticles3D".restart()
-					$"arms&shit/gun/CPUParticles3D".emitting = true
-					next_shot = false
+					
 					if collider is RigidBody3D:
 						collider.apply_central_impulse(self.global_transform.basis * effect)
 					if collider and 'enemy' in collider.get_groups():

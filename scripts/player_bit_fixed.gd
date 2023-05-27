@@ -32,7 +32,7 @@ const MOUSE_SENSITIVITY = 0.1
 # jetpack variables
 var maxJetpackEnergy = 100
 var currentJetpackEnergy = 100
-var jetpackRegenRate = 0.9
+var jetpackRegenRate = 0.1
 var jetpackThrust = 1
 var canFly = true
 var jetpackEnabled = false
@@ -42,6 +42,15 @@ const hold_time = 0.3
 var timer = Timer.new()
 var effect = Vector3(0, -5, -5)
 var cameraZoom = 0.0
+
+# "we need guns... lots of guns..."
+var current_weapon : String
+var desired_weapon : String
+
+# temporary hardcoded!
+# nie powinnismy hardcodowac broni, beda zapewne do wyboru w jakims menu (przed startem gry w lobby / whatever)
+# beda pushowane do tej tablicy dynamicznie z UI lobby (guns menu or whtev)
+var weapons = ['M1911 _pistol', 'weapon_2', 'weapon_3', 'weapon_4']
 
 
 
@@ -57,6 +66,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 4 # mu
 #ui ? ?? 
 @onready var jetpackLabel = $head/Camera3D/Control/jetpack_label
 @onready var ammo_count = $head/Camera3D/Control/ammo_count
+@onready var joint = $"head/Camera3D/joint(do_not_remove)"
 # dziala to?  xd
 #func update_jetpackLabel_col():
 #	jetpackLabel.label_settings.font_color = currentJetpackEnergy
@@ -81,7 +91,35 @@ func _input(event):
 			rotate_y(deg_to_rad(-event.relative.x) * MOUSE_SENSITIVITY)
 			neck.rotate_x(deg_to_rad(-event.relative.y) * MOUSE_SENSITIVITY)
 			neck.rotation.x = clamp(neck.rotation.x, deg_to_rad(-90), deg_to_rad(90))
+	
+	# handle weapon slots
+	if Input.is_action_just_pressed('weapon_slot_1'):
+		desired_weapon = weapons[0]
+		_weapon_switcher()
+	if Input.is_action_just_pressed("weapon_slot_2"):
+		desired_weapon = weapons[1]
+		_weapon_switcher()
+	if Input.is_action_just_pressed("weapon_slot_3"):
+		desired_weapon = weapons[2]
+		_weapon_switcher()
+	if Input.is_action_just_pressed("weapon_slot_4"):
+		desired_weapon = weapons[3]
+		_weapon_switcher()
 
+
+func _weapon_switcher():
+		for weapon in joint.get_children():
+			if  weapon.name == desired_weapon:
+				weapon.visible = true
+				weapon.set_process(true)
+		
+#			elif weapon.name == current_weapon:
+#				weapon.visible = false
+#				weapon.set_process(false)
+			else:
+				weapon.visible = false
+				weapon.set_process(false)
+#		current_weapon = desired_weapon
 
 
 func _process(delta):
@@ -90,9 +128,9 @@ func _process(delta):
 	global_script.player_state = player_state
 		
 		# Handle sprint & shit
-	if speed == 10:
+	if speed == DEFAULT_SPEED:
 		player_state = 'walk'
-	if Vector3.ZERO == self.get_velocity():
+	if self.get_velocity() == Vector3.ZERO:
 		player_state = 'idle'
 	if Input.is_action_pressed("sprint"):
 		player_state = 'sprint'
@@ -159,20 +197,15 @@ func _process(delta):
 	# Handle Jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
-		#prints(velocity)
 		
 	# Handle walljumps
 	#decrease height of the subsequent jumps over time !!! this will improve
 	# weird feeling of unlimited jumpiness XD
-	#so if player wants to jump high, or wallrun, it has to be done fast and
-	#and with momentum, not jump, coffe break, jump, scratching butt, jump...
-	# - delta * 3 maybe ? some timer here like with fov zoom out
+	
 	elif Input.is_action_just_pressed("jump") and is_on_wall() and walljumps > 0:
 		velocity.y = JUMP_VELOCITY
-		#simplified version
 		JUMP_VELOCITY -= 2.5
 		walljumps -= 1
-		#prints(JUMP_VELOCITY)
 
 	#reset walljumps couner
 	if is_on_floor():
@@ -211,4 +244,5 @@ func _process(delta):
 #anoher whatever the fuck raycast
 	#raycast origin
 	bullet_origin.transform.origin = $head/Camera3D.transform.origin
+	
 

@@ -1,7 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://b086gn4fodijm"]
+[gd_scene load_steps=11 format=3 uid="uid://b086gn4fodijm"]
 
 [ext_resource type="Script" path="res://scripts/player_bit_fixed.gd" id="1_okjq5"]
-[ext_resource type="PackedScene" uid="uid://bqrdp8t3g0bfw" path="res://scenes/guns/m_1911__pistol.tscn" id="2_kdd0v"]
+[ext_resource type="PackedScene" uid="uid://chkujett01dfi" path="res://scenes/guns/m_1911v_3.tscn" id="2_rgbra"]
+[ext_resource type="PackedScene" uid="uid://c4whxfl4wdark" path="res://scenes/guns/weapon_2.tscn" id="3_j8r5l"]
+[ext_resource type="PackedScene" uid="uid://blbbx71yy2qw4" path="res://scenes/guns/weapon_3.tscn" id="4_2vcg2"]
+[ext_resource type="PackedScene" uid="uid://c20be83pif14c" path="res://scenes/guns/weapon_4.tscn" id="5_3rhy8"]
+[ext_resource type="PackedScene" uid="uid://cr4xn0vrldr7w" path="res://scenes/guns/m_1911_alt.tscn" id="6_ce3fw"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w7i0t"]
 
@@ -30,7 +34,7 @@ shape = SubResource("CapsuleShape3D_0t6hj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71695, 0)
 
 [node name="Camera3D" type="Camera3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0874723, 0.150263, -0.288903)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.289)
 current = true
 
 [node name="Control" type="Control" parent="head/Camera3D"]
@@ -87,10 +91,26 @@ target_position = Vector3(0, 0, -250)
 collision_mask = 25
 
 [node name="joint(do_not_remove)" type="Marker3D" parent="head/Camera3D"]
-transform = Transform3D(0.999799, 0, -0.0200699, 0, 1, 0, 0.0200699, 0, 0.999799, 9.23574e-05, 0.00172186, -0.16896)
 metadata/_edit_lock_ = true
 
-[node name="M1911 _pistol" parent="head/Camera3D/joint(do_not_remove)" instance=ExtResource("2_kdd0v")]
+[node name="M1911V3" parent="head/Camera3D/joint(do_not_remove)" instance=ExtResource("2_rgbra")]
+transform = Transform3D(-0.624, 0, -9.42214e-08, 0, 0.624, 0, 9.42214e-08, 0, -0.624, -0.00500826, -0.584135, -0.0825514)
+visible = false
+
+[node name="weapon_2" parent="head/Camera3D/joint(do_not_remove)" instance=ExtResource("3_j8r5l")]
+transform = Transform3D(0.999608, -0.0200628, -0.0195311, 0.0200628, 0.0266481, 0.999444, -0.0195312, -0.999444, 0.0270401, 0.378221, -0.316987, -0.131024)
+visible = false
+
+[node name="weapon_3" parent="head/Camera3D/joint(do_not_remove)" instance=ExtResource("4_2vcg2")]
+transform = Transform3D(0.999663, -0.0198001, -0.0167869, 0.0198001, 0.163412, 0.986359, -0.0167869, -0.986359, 0.163749, 0.383623, -0.249383, -0.189148)
+visible = false
+
+[node name="weapon_4" parent="head/Camera3D/joint(do_not_remove)" instance=ExtResource("5_3rhy8")]
+transform = Transform3D(0.999592, -0.0200679, -0.0203478, 0.0200679, -0.0140495, 0.9997, -0.0203478, -0.9997, -0.0136408, 0.363827, -0.313921, -0.260868)
+visible = false
+
+[node name="m1911_alt" parent="head/Camera3D/joint(do_not_remove)" instance=ExtResource("6_ce3fw")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.16469e-08, -0.409171, -0.590771)
 
 [node name="ladder_raycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0390505, -0.999237, 0, 0.999237, -0.0390505, 0, -0.0145242, -0.0612492)
