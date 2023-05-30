@@ -67,9 +67,17 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 4 # mu
 @onready var jetpackLabel = $head/Camera3D/Control/jetpack_label
 @onready var ammo_count = $head/Camera3D/Control/ammo_count
 @onready var joint = $"head/Camera3D/joint(do_not_remove)"
+@onready var grenade_point = $head/Camera3D/Grenade_Point
 # dziala to?  xd
 #func update_jetpackLabel_col():
 #	jetpackLabel.label_settings.font_color = currentJetpackEnergy
+
+var grenade_scene = preload('res://scenes/guns/grenade_01.tscn')
+var GRENADE_THROW_FORCE = 15
+var GRENADE_MAX_THROW_FORCE = 60
+#temp grenade quantity, TBC
+var grenades = 100
+var can_throw_grenade = true
 	
 
 func _input(event):
@@ -105,7 +113,28 @@ func _input(event):
 	if Input.is_action_just_pressed("weapon_slot_4"):
 		desired_weapon = weapons[3]
 		_weapon_switcher()
-
+		
+	# BASIC GRENADE TOSS
+	# why multiple grenades bug ? ? ?
+	# adding boolean for repair input firing twice bug:
+	if Input.is_action_just_released("alt_grenade") and can_throw_grenade:
+		can_throw_grenade = false
+		
+		if grenades > 0:
+			can_throw_grenade = false
+			grenades -=1
+			prints(grenades)
+			
+			var grenade_clone = grenade_scene.instantiate()
+			grenade_clone.global_transform = grenade_point.global_transform
+			get_tree().root.add_child(grenade_clone)
+			grenade_clone.apply_central_impulse(-grenade_clone.global_transform.basis.z * (speed / 10) * GRENADE_THROW_FORCE)
+			
+		#reset to minimum throw force
+		GRENADE_THROW_FORCE = 15
+		
+	can_throw_grenade = true
+	
 
 func _weapon_switcher():
 		for weapon in joint.get_children():
@@ -122,7 +151,14 @@ func _weapon_switcher():
 #		current_weapon = desired_weapon
 
 
+
 func _process(delta):
+	
+	# grenade power timer
+	if Input.is_action_pressed("alt_grenade"):
+		if GRENADE_THROW_FORCE < GRENADE_MAX_THROW_FORCE:
+			GRENADE_THROW_FORCE += delta * 16
+	
 	#anim_handler
 	global_script.player_pos = player_pos
 	global_script.player_state = player_state
