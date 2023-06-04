@@ -19,6 +19,7 @@ const DURATION = 4.0
 @onready var emission_particles = $emission_particles
 @onready var explosion_sfx = $AudioStreamPlayer3D
 @onready var explosion_light = $OmniLight3D
+@onready var distortion = $DistortionShader
 
 func _ready():
 	pass
@@ -32,6 +33,7 @@ func _process(delta):
 		if explosion_wait_timer <= 0:
 			explosion_particles.emitting = true
 			emission_particles.emitting = true
+			distortion.visible = true
 			
 			explosion_light.light_energy = 20.0
 			explosion_light.light_indirect_energy = 10.0

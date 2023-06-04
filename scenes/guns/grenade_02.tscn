@@ -1,25 +1,23 @@
-[gd_scene load_steps=22 format=3 uid="uid://21vjyufedxro"]
+[gd_scene load_steps=27 format=3 uid="uid://21vjyufedxro"]
 
 [ext_resource type="Script" path="res://scripts/grenade_02.gd" id="1_k45ij"]
 [ext_resource type="Texture2D" uid="uid://bpi53wb11apfn" path="res://model/assets/Metal_Corrugated_011_basecolor.jpg" id="2_texay"]
 [ext_resource type="Texture2D" uid="uid://det22w03f0fg4" path="res://assets/textures/particles/lighgtning3.png" id="3_5fmhb"]
 [ext_resource type="AudioStream" uid="uid://bfl72yctqwwhf" path="res://assets/audio/explosion_02.ogg" id="4_b5crj"]
+[ext_resource type="Shader" path="res://scenes/guns/grenade_02.gdshader" id="5_vlgqe"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_avw3b"]
+friction = 0.5
 rough = true
-bounce = 0.3
+bounce = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7no5g"]
 albedo_texture = ExtResource("2_texay")
 
-[sub_resource type="SphereMesh" id="SphereMesh_ly560"]
-radius = 0.1
-height = 0.2
+[sub_resource type="BoxMesh" id="BoxMesh_m5t8p"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_fxw5b"]
-custom_solver_bias = 1.0
-margin = 0.1
-radius = 0.124878
+[sub_resource type="BoxShape3D" id="BoxShape3D_8d6dv"]
+size = Vector3(0.151737, 0.268548, 0.136006)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u14bv"]
 
@@ -98,20 +96,41 @@ color_ramp = SubResource("GradientTexture1D_p12ds")
 
 [sub_resource type="QuadMesh" id="QuadMesh_3cnp6"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_d1vkb"]
+noise_type = 0
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rstf2"]
+seamless = true
+noise = SubResource("FastNoiseLite_d1vkb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kecb7"]
+render_priority = 0
+shader = ExtResource("5_vlgqe")
+shader_parameter/distortionView = 0.01
+shader_parameter/speedView = 0.4
+shader_parameter/tintColor = Color(0.219608, 0, 0.890196, 1)
+shader_parameter/fesnelAmount = 3.0
+shader_parameter/distortionVertex = 0.1
+shader_parameter/speedVertex = 0.0
+shader_parameter/noiseViewX = SubResource("NoiseTexture2D_rstf2")
+
+[sub_resource type="SphereMesh" id="SphereMesh_alnh6"]
+
 [node name="grenade_02" type="RigidBody3D"]
 mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_avw3b")
 gravity_scale = 2.0
 continuous_cd = true
-can_sleep = false
 script = ExtResource("1_k45ij")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.138624, 0, 0, 0, 0.274205, 0, 0, 0, 0.129114, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_7no5g")
-mesh = SubResource("SphereMesh_ly560")
+mesh = SubResource("BoxMesh_m5t8p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_fxw5b")
+shape = SubResource("BoxShape3D_8d6dv")
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -148,3 +167,9 @@ max_db = 5.0
 light_color = Color(0.192157, 0.537255, 1, 1)
 light_energy = 0.0
 light_indirect_energy = 0.0
+
+[node name="DistortionShader" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+visible = false
+material_override = SubResource("ShaderMaterial_kecb7")
+mesh = SubResource("SphereMesh_alnh6")
