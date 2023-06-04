@@ -15,10 +15,10 @@ var effect = Vector3(0, -5, 10)
 
 var aim_state = 'not_aim'
 
-@onready var bullet_origin = get_parent().get_node("../bullet_origin")
+@onready var bullet_origin = $"../../Camera3D/bullet_origin"
 
 # we should probably move it to some ui controller in the future
-@onready var ammoCountLabel = $"../../Control/ammo_count"
+@onready var ammoCountLabel = $"../../Camera3D/Control/ammo_count"
 
 
 func updateAmmoLabel():

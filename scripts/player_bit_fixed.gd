@@ -1,6 +1,8 @@
 extends CharacterBody3D
 
 
+
+
 var speed = 0
 var acceleration = 6
 const DEFAULT_SPEED = 10.0
@@ -10,6 +12,8 @@ const CROUCH_SPEED = 6.0
 const RUN_FOV = 70.0
 const WALK_FOV = 60.0
 const ZOOM_FOV = 40.0
+
+const sway = 25
 
 const DEFAULT_JUMP_VELOCITY = 15.0
 var JUMP_VELOCITY = 15.0
@@ -50,7 +54,7 @@ var desired_weapon : String
 # temporary hardcoded!
 # nie powinnismy hardcodowac broni, beda zapewne do wyboru w jakims menu (przed startem gry w lobby / whatever)
 # beda pushowane do tej tablicy dynamicznie z UI lobby (guns menu or whtev)
-var weapons = ['M1911 _pistol', 'weapon_2', 'weapon_3', 'weapon_4']
+var weapons = ['M1911_normal', 'm1911_alt', 'weapon_3', 'weapon_4']
 
 
 
@@ -66,16 +70,19 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 4 # mu
 #ui ? ?? 
 @onready var jetpackLabel = $head/Camera3D/Control/jetpack_label
 @onready var ammo_count = $head/Camera3D/Control/ammo_count
-@onready var joint = $"head/Camera3D/joint(do_not_remove)"
+@onready var joint = $"head/joint"
+@onready var hand = $head/hand
 # dziala to?  xd
 #func update_jetpackLabel_col():
 #	jetpackLabel.label_settings.font_color = currentJetpackEnergy
 	
-
+func  _ready():
+	joint.top_level = true
+	
 func _input(event):
 	
 #----mouse_input-----
-	
+		
 	if Input.is_action_just_pressed("ui_cancel"): #esc key
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -113,13 +120,13 @@ func _weapon_switcher():
 				weapon.visible = true
 				weapon.set_process(true)
 		
-#			elif weapon.name == current_weapon:
-#				weapon.visible = false
-#				weapon.set_process(false)
+			elif weapon.name == current_weapon:
+				weapon.visible = false
+				weapon.set_process(false)
 			else:
 				weapon.visible = false
 				weapon.set_process(false)
-#		current_weapon = desired_weapon
+		current_weapon = desired_weapon
 
 
 func _process(delta):
@@ -127,6 +134,9 @@ func _process(delta):
 	global_script.player_pos = player_pos
 	global_script.player_state = player_state
 		
+	joint.global_transform.origin = hand.global_transform.origin
+	joint.rotation.y = lerp_angle(joint.rotation.y, rotation.y, sway * delta)
+	joint.rotation.x = lerp_angle(joint.rotation.x, neck.rotation.x, sway * delta)
 		# Handle sprint & shit
 	if speed == DEFAULT_SPEED:
 		player_state = 'walk'
@@ -237,12 +247,10 @@ func _process(delta):
 			velocity.x = move_toward(velocity.x, 0, speed * delta * 6)
 			velocity.z = move_toward(velocity.z, 0, speed * delta * 6)
 
-	
-			
-#whatever the fuck is this doing right here----------
+
 	move_and_slide()
-#anoher whatever the fuck raycast
-	#raycast origin
+
+#random raycast origin, don't mind it. He is happy here
 	bullet_origin.transform.origin = $head/Camera3D.transform.origin
 	
 
