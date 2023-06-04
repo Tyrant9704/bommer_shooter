@@ -77,7 +77,7 @@ var GRENADE_THROW_FORCE = 15
 var GRENADE_MAX_THROW_FORCE = 60
 #temp grenade quantity, TBC
 var grenades = 100
-var can_throw_grenade = true
+#var can_throw_grenade = true
 	
 
 func _input(event):
@@ -115,13 +115,13 @@ func _input(event):
 		_weapon_switcher()
 		
 	# BASIC GRENADE TOSS
-	# why multiple grenades bug ? ? ?
-	# adding boolean for repair input firing twice bug:
-	if Input.is_action_just_released("alt_grenade") and can_throw_grenade:
-		can_throw_grenade = false
+	# when using middle mouse button, there is a bug - we throw multiple grenades
+	# it happens because of multiple event firing
+	# changed grenade throw button to G for now...
+	# holding G for longer time adds delta time to GRENADE_THROW_FORCE in process function
+	if Input.is_action_just_released("alt_grenade"):
 		
 		if grenades > 0:
-			can_throw_grenade = false
 			grenades -=1
 			prints(grenades)
 			
@@ -133,7 +133,6 @@ func _input(event):
 		#reset to minimum throw force
 		GRENADE_THROW_FORCE = 15
 		
-	can_throw_grenade = true
 	
 
 func _weapon_switcher():
