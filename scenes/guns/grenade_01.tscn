@@ -1,0 +1,99 @@
+[gd_scene load_steps=15 format=3 uid="uid://bo7ortv1rtsa2"]
+
+[ext_resource type="Script" path="res://scripts/grenade_01.gd" id="1_xnqx7"]
+[ext_resource type="Texture2D" uid="uid://ba8bw3huq3h1d" path="res://assets/textures/particles/smoke1.png" id="1_yy4wl"]
+[ext_resource type="Texture2D" uid="uid://bpi53wb11apfn" path="res://model/assets/Metal_Corrugated_011_basecolor.jpg" id="2_p2j7w"]
+[ext_resource type="AudioStream" uid="uid://bfl72yctqwwhf" path="res://assets/audio/explosion_02.ogg" id="3_j7tdp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_avw3b"]
+rough = true
+bounce = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7no5g"]
+albedo_texture = ExtResource("2_p2j7w")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ly560"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fxw5b"]
+custom_solver_bias = 1.0
+margin = 0.1
+radius = 0.124878
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_u14bv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eo428"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_yy4wl")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_noory"]
+offsets = PackedFloat32Array(0, 0.64441, 0.84472)
+colors = PackedColorArray(1, 0.646064, 0.392029, 1, 1, 0.172549, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6dv66"]
+gradient = SubResource("Gradient_noory")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_283qe"]
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, -10, 0)
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+angle_max = 360.0
+scale_min = 0.1
+scale_max = 0.2
+color_ramp = SubResource("GradientTexture1D_6dv66")
+
+[sub_resource type="QuadMesh" id="QuadMesh_d00kv"]
+
+[node name="grenade_01" type="RigidBody3D"]
+mass = 0.4
+physics_material_override = SubResource("PhysicsMaterial_avw3b")
+gravity_scale = 2.0
+continuous_cd = true
+can_sleep = false
+script = ExtResource("1_xnqx7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_7no5g")
+mesh = SubResource("SphereMesh_ly560")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_fxw5b")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("SphereShape3D_u14bv")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_eo428")
+cast_shadow = 0
+emitting = false
+amount = 200
+lifetime = 4.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_283qe")
+draw_pass_1 = SubResource("QuadMesh_d00kv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_j7tdp")
+volume_db = 5.0
+unit_size = 20.0
+max_db = 5.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.482353, 0.184314, 1)
+light_energy = 0.0
+light_indirect_energy = 0.0

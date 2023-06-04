@@ -112,6 +112,9 @@ visible = false
 [node name="m1911_alt" parent="head/Camera3D/joint(do_not_remove)" instance=ExtResource("6_ce3fw")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.16469e-08, -0.409171, -0.590771)
 
+[node name="Grenade_Point" type="Node3D" parent="head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.363079, 0.0188268, -0.974478)
+
 [node name="ladder_raycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0390505, -0.999237, 0, 0.999237, -0.0390505, 0, -0.0145242, -0.0612492)
 collision_mask = 24
