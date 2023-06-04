@@ -73,10 +73,16 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 4 # mu
 #	jetpackLabel.label_settings.font_color = currentJetpackEnergy
 
 var grenade_scene = preload('res://scenes/guns/grenade_01.tscn')
+var grenade_scene_02 = preload("res://scenes/guns/grenade_02.tscn")
 var GRENADE_THROW_FORCE = 15
 var GRENADE_MAX_THROW_FORCE = 60
 #temp grenade quantity, TBC
 var grenades = 100
+
+var grenadesArr = ['grenade_01', 'grenade_02']
+
+# temp array for switching current grenade
+var current_grenade = grenadesArr[1]
 #var can_throw_grenade = true
 	
 
@@ -125,7 +131,13 @@ func _input(event):
 			grenades -=1
 			prints(grenades)
 			
-			var grenade_clone = grenade_scene.instantiate()
+			var grenade_clone
+			
+			if current_grenade == grenadesArr[0]:
+				grenade_clone = grenade_scene.instantiate()
+			elif current_grenade == grenadesArr[1]:
+				grenade_clone = grenade_scene_02.instantiate()
+			
 			grenade_clone.global_transform = grenade_point.global_transform
 			get_tree().root.add_child(grenade_clone)
 			grenade_clone.apply_central_impulse(-grenade_clone.global_transform.basis.z * (speed / 10) * GRENADE_THROW_FORCE)
