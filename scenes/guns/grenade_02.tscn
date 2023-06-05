@@ -1,8 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://21vjyufedxro"]
+[gd_scene load_steps=29 format=3 uid="uid://21vjyufedxro"]
 
 [ext_resource type="Script" path="res://scripts/grenade_02.gd" id="1_k45ij"]
-[ext_resource type="Texture2D" uid="uid://bpi53wb11apfn" path="res://model/assets/Metal_Corrugated_011_basecolor.jpg" id="2_texay"]
 [ext_resource type="Texture2D" uid="uid://det22w03f0fg4" path="res://assets/textures/particles/lighgtning3.png" id="3_5fmhb"]
+[ext_resource type="Texture2D" uid="uid://bpi53wb11apfn" path="res://model/assets/Metal_Corrugated_011_basecolor.jpg" id="3_g0x4k"]
 [ext_resource type="AudioStream" uid="uid://bfl72yctqwwhf" path="res://assets/audio/explosion_02.ogg" id="4_b5crj"]
 [ext_resource type="Shader" path="res://scenes/guns/grenade_02.gdshader" id="5_vlgqe"]
 
@@ -12,12 +12,24 @@ rough = true
 bounce = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7no5g"]
-albedo_texture = ExtResource("2_texay")
+albedo_texture = ExtResource("3_g0x4k")
 
 [sub_resource type="BoxMesh" id="BoxMesh_m5t8p"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_soe28"]
+albedo_color = Color(0.470588, 0.94902, 1, 1)
+albedo_texture = ExtResource("3_g0x4k")
+metallic = 0.5
+roughness = 0.1
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_bbuuq"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.32
+radial_segments = 6
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_8d6dv"]
-size = Vector3(0.151737, 0.268548, 0.136006)
+size = Vector3(0.166575, 0.339325, 0.171982)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_u14bv"]
 
@@ -86,6 +98,8 @@ colors = PackedColorArray(0.878497, 0.590723, 1, 1, 0.738174, 0.339125, 1, 1, 0.
 gradient = SubResource("Gradient_13br3")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_om0qa"]
+emission_shape = 1
+emission_sphere_radius = 1.0
 spread = 180.0
 gravity = Vector3(0, 0, 0)
 initial_velocity_min = 2.0
@@ -112,7 +126,7 @@ shader_parameter/speedView = 0.4
 shader_parameter/tintColor = Color(0.219608, 0, 0.890196, 1)
 shader_parameter/fesnelAmount = 3.0
 shader_parameter/distortionVertex = 0.1
-shader_parameter/speedVertex = 0.0
+shader_parameter/speedVertex = 0.1
 shader_parameter/noiseViewX = SubResource("NoiseTexture2D_rstf2")
 
 [sub_resource type="SphereMesh" id="SphereMesh_alnh6"]
@@ -122,12 +136,18 @@ mass = 0.4
 physics_material_override = SubResource("PhysicsMaterial_avw3b")
 gravity_scale = 2.0
 continuous_cd = true
+angular_damp = 5.0
 script = ExtResource("1_k45ij")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.138624, 0, 0, 0, 0.274205, 0, 0, 0, 0.129114, 0, 0, 0)
+transform = Transform3D(0.119291, 0, 0, 0, 0.221713, 0, 0, 0, 0.122491, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_7no5g")
 mesh = SubResource("BoxMesh_m5t8p")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-3.49691e-08, 0, -0.8, 0, 0.9, 0, 0.8, 0, -3.49691e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_soe28")
+mesh = SubResource("CylinderMesh_bbuuq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_8d6dv")
@@ -151,9 +171,8 @@ draw_pass_1 = SubResource("QuadMesh_d00kv")
 [node name="emission_particles" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_osjef")
 emitting = false
-amount = 20
+amount = 100
 lifetime = 0.2
-explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_om0qa")
 draw_pass_1 = SubResource("QuadMesh_3cnp6")
 
@@ -167,6 +186,7 @@ max_db = 5.0
 light_color = Color(0.192157, 0.537255, 1, 1)
 light_energy = 0.0
 light_indirect_energy = 0.0
+omni_range = 0.1
 
 [node name="DistortionShader" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
