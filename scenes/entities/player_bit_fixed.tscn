@@ -110,6 +110,9 @@ visible = false
 [node name="shotgun" parent="head/joint" instance=ExtResource("5_rwsmd")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.917, -0.455, -1.998)
 
+[node name="Grenade_Point" type="Node3D" parent="head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.363079, 0.0188268, -0.974478)
+
 [node name="ladder_raycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0390505, -0.999237, 0, 0.999237, -0.0390505, 0, -0.0145242, -0.0612492)
 collision_mask = 24
