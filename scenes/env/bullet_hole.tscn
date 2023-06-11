@@ -14,7 +14,7 @@ transform = Transform3D(0.044, 0, 0, 0, 0.044, 0, 0, 0, 0.044, 0, 0, 0)
 script = ExtResource("1_8u77t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, -0.202012, -0.739373, -0.0135514)
+transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 8.9407e-09, 0, -0.1)
 mesh = SubResource("QuadMesh_m100e")
 surface_material_override/0 = SubResource("StandardMaterial3D_6bha0")
 
