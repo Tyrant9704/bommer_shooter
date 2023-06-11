@@ -13,7 +13,7 @@ const RUN_FOV = 70.0
 const WALK_FOV = 60.0
 const ZOOM_FOV = 40.0
 
-const sway = 25
+const sway = 10
 
 const DEFAULT_JUMP_VELOCITY = 15.0
 var JUMP_VELOCITY = 15.0
@@ -54,7 +54,7 @@ var desired_weapon : String
 # temporary hardcoded!
 # nie powinnismy hardcodowac broni, beda zapewne do wyboru w jakims menu (przed startem gry w lobby / whatever)
 # beda pushowane do tej tablicy dynamicznie z UI lobby (guns menu or whtev)
-var weapons = ['M1911_normal', 'm1911_alt', 'weapon_3', 'weapon_4']
+var weapons = ['M1911_normal', 'm1911_alt', 'weapon_3', 'shotgun']
 
 
 
@@ -66,7 +66,6 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 4 # mu
 @onready var player_capsule = $Player_collision
 @onready var ladder = $"../ladder"
 @onready var ladder_raycast = $ladder_raycast
-@onready var bullet_origin = $head/Camera3D/bullet_origin
 #ui ? ?? 
 @onready var jetpackLabel = $head/Camera3D/Control/jetpack_label
 @onready var ammo_count = $head/Camera3D/Control/ammo_count
@@ -250,7 +249,7 @@ func _process(delta):
 
 	move_and_slide()
 
-#random raycast origin, don't mind it. He is happy here
-	bullet_origin.transform.origin = $head/Camera3D.transform.origin
+#random raycast origin, don't mind it. He was happy here
+	#bullet_origin.transform.origin = $head/Camera3D.transform.origin
 	
 

@@ -15,7 +15,8 @@ var effect = Vector3(0, -5, 10)
 
 var aim_state = 'not_aim'
 
-@onready var bullet_origin = $"../../Camera3D/bullet_origin"
+@onready var bullet_origin = $bullet_origin
+@onready var camera =$"../../Camera3D/raycast_origin"
 
 # we should probably move it to some ui controller in the future
 @onready var ammoCountLabel = $"../../Camera3D/Control/ammo_count"
@@ -31,6 +32,8 @@ func _ready():
 
 func _process(delta):
 	
+	bullet_origin.global_transform.origin = camera.global_transform.origin
+	bullet_origin.global_rotation = camera.global_rotation
 	# self explainatory		
 	updateAmmoLabel()
 	

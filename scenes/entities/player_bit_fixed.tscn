@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b086gn4fodijm"]
+[gd_scene load_steps=11 format=3 uid="uid://b086gn4fodijm"]
 
 [ext_resource type="Script" path="res://scripts/player_bit_fixed.gd" id="1_okjq5"]
 [ext_resource type="PackedScene" uid="uid://chkujett01dfi" path="res://scenes/guns/m_1911v_3.tscn" id="2_rgbra"]
-[ext_resource type="PackedScene" uid="uid://blbbx71yy2qw4" path="res://scenes/guns/weapon_3.tscn" id="4_2vcg2"]
-[ext_resource type="PackedScene" uid="uid://c20be83pif14c" path="res://scenes/guns/weapon_4.tscn" id="5_3rhy8"]
-[ext_resource type="PackedScene" uid="uid://cr4xn0vrldr7w" path="res://scenes/guns/m_1911_alt.tscn" id="6_ce3fw"]
+[ext_resource type="PackedScene" path="res://scenes/guns/weapon_3.tscn" id="4_2vcg2"]
+[ext_resource type="PackedScene" uid="uid://bnpupwfw72re0" path="res://scenes/guns/shotgun.tscn" id="5_rwsmd"]
+[ext_resource type="PackedScene" uid="uid://dt4wenwipsixw" path="res://scenes/guns/m_1911_alt.tscn" id="6_ce3fw"]
+[ext_resource type="Texture2D" uid="uid://ba2q3s8o60g1b" path="res://assets/crosshair.png" id="6_n1gr7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w7i0t"]
 
@@ -72,25 +73,22 @@ grow_vertical = 0
 text = "Ammo 7/35"
 label_settings = SubResource("LabelSettings_ojmw0")
 
-[node name="ColorRect" type="ColorRect" parent="head/Camera3D/Control"]
+[node name="ColorRect" type="TextureRect" parent="head/Camera3D/Control"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -5.0
-offset_top = -5.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("6_n1gr7")
+metadata/_edit_use_anchors_ = true
 
-[node name="bullet_origin" type="RayCast3D" parent="head/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0120677, 0.0230621, 0)
-target_position = Vector3(0, 0, -250)
-collision_mask = 25
+[node name="raycast_origin" type="Marker3D" parent="head/Camera3D"]
 
 [node name="hand" type="Node3D" parent="head"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.289)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.496)
 metadata/_edit_lock_ = true
 
 [node name="joint" type="Node3D" parent="head"]
@@ -109,9 +107,8 @@ visible = false
 transform = Transform3D(0.999663, -0.0198001, -0.0167869, 0.0198001, 0.163412, 0.986359, -0.0167869, -0.986359, 0.163749, 0.383623, -0.249383, -0.189148)
 visible = false
 
-[node name="weapon_4" parent="head/joint" instance=ExtResource("5_3rhy8")]
-transform = Transform3D(0.999592, -0.0200679, -0.0203478, 0.0200679, -0.0140495, 0.9997, -0.0203478, -0.9997, -0.0136408, 0.363827, -0.313921, -0.260868)
-visible = false
+[node name="shotgun" parent="head/joint" instance=ExtResource("5_rwsmd")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.917, -0.455, -1.998)
 
 [node name="ladder_raycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0390505, -0.999237, 0, 0.999237, -0.0390505, 0, -0.0145242, -0.0612492)
