@@ -32,6 +32,7 @@ var player_pos = 'stand'
 
 
 const MOUSE_SENSITIVITY = 0.1
+var Menu_mode = true
 
 # jetpack variables
 var maxJetpackEnergy = 100
@@ -102,9 +103,13 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"): #esc key
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			Menu_mode = false
+			prints(Menu_mode)
 			# enable ingame HUD
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			Menu_mode = true
+			prints(Menu_mode)
 			# disable ingame HUD
 			# add menu screen UI
 		
@@ -116,43 +121,45 @@ func _input(event):
 			neck.rotation.x = clamp(neck.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 	
 	# handle weapon slots
-	if Input.is_action_just_pressed('weapon_slot_1'):
-		desired_weapon = weapons[0]
-		_weapon_switcher()
-	if Input.is_action_just_pressed("weapon_slot_2"):
-		desired_weapon = weapons[1]
-		_weapon_switcher()
-	if Input.is_action_just_pressed("weapon_slot_3"):
-		desired_weapon = weapons[2]
-		_weapon_switcher()
-	if Input.is_action_just_pressed("weapon_slot_4"):
-		desired_weapon = weapons[3]
-		_weapon_switcher()
+	if !Menu_mode:
+		if Input.is_action_just_pressed('weapon_slot_1'):
+			desired_weapon = weapons[0]
+			_weapon_switcher()
+		if Input.is_action_just_pressed("weapon_slot_2"):
+			desired_weapon = weapons[1]
+			_weapon_switcher()
+		if Input.is_action_just_pressed("weapon_slot_3"):
+			desired_weapon = weapons[2]
+			_weapon_switcher()
+		if Input.is_action_just_pressed("weapon_slot_4"):
+			desired_weapon = weapons[3]
+			_weapon_switcher()
 		
 	# BASIC GRENADE TOSS
 	# when using middle mouse button, there is a bug - we throw multiple grenades
 	# it happens because of multiple event firing
 	# changed grenade throw button to G for now...
 	# holding G for longer time adds delta time to GRENADE_THROW_FORCE in process function
-	if Input.is_action_just_released("alt_grenade"):
-		
-		if grenades > 0:
-			grenades -=1
-			prints(grenades)
+	if !Menu_mode:
+		if Input.is_action_just_released("alt_grenade"):
 			
-			var grenade_clone
-			
-			if current_grenade == grenadesArr[0]:
-				grenade_clone = grenade_scene.instantiate()
-			elif current_grenade == grenadesArr[1]:
-				grenade_clone = grenade_scene_02.instantiate()
-			
-			grenade_clone.global_transform = grenade_point.global_transform
-			get_tree().root.add_child(grenade_clone)
-			grenade_clone.apply_central_impulse(-grenade_clone.global_transform.basis.z * (speed / 10) * GRENADE_THROW_FORCE)
-			
-		#reset to minimum throw force
-		GRENADE_THROW_FORCE = 15
+			if grenades > 0:
+				grenades -=1
+				prints(grenades)
+				
+				var grenade_clone
+				
+				if current_grenade == grenadesArr[0]:
+					grenade_clone = grenade_scene.instantiate()
+				elif current_grenade == grenadesArr[1]:
+					grenade_clone = grenade_scene_02.instantiate()
+				
+				grenade_clone.global_transform = grenade_point.global_transform
+				get_tree().root.add_child(grenade_clone)
+				grenade_clone.apply_central_impulse(-grenade_clone.global_transform.basis.z * (speed / 10) * GRENADE_THROW_FORCE)
+				
+			#reset to minimum throw force
+			GRENADE_THROW_FORCE = 15
 		
 	
 
