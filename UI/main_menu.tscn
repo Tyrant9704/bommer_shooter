@@ -149,6 +149,7 @@ offset_right = 20.0
 grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_a1agm")
+stretch_mode = 3
 
 [connection signal="button_up" from="VBoxContainer/Options" to="." method="_on_options_button_up"]
 [connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_quit_button_up"]
