@@ -1,11 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://b086gn4fodijm"]
+[gd_scene load_steps=10 format=3 uid="uid://b086gn4fodijm"]
 
 [ext_resource type="Script" path="res://scripts/player_bit_fixed.gd" id="1_okjq5"]
 [ext_resource type="PackedScene" uid="uid://chkujett01dfi" path="res://scenes/guns/m_1911v_3.tscn" id="2_rgbra"]
 [ext_resource type="PackedScene" path="res://scenes/guns/weapon_3.tscn" id="4_2vcg2"]
 [ext_resource type="PackedScene" uid="uid://bnpupwfw72re0" path="res://scenes/guns/shotgun.tscn" id="5_rwsmd"]
 [ext_resource type="PackedScene" uid="uid://dt4wenwipsixw" path="res://scenes/guns/m_1911_alt.tscn" id="6_ce3fw"]
-[ext_resource type="Texture2D" uid="uid://ba2q3s8o60g1b" path="res://assets/crosshair.png" id="6_n1gr7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w7i0t"]
 
@@ -82,10 +81,12 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("6_n1gr7")
 metadata/_edit_use_anchors_ = true
 
 [node name="raycast_origin" type="Marker3D" parent="head/Camera3D"]
+
+[node name="Grenade_Point" type="Node3D" parent="head/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.363079, 0.0188268, -0.974478)
 
 [node name="hand" type="Node3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.496)
@@ -109,9 +110,6 @@ visible = false
 
 [node name="shotgun" parent="head/joint" instance=ExtResource("5_rwsmd")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.917, -0.455, -1.998)
-
-[node name="Grenade_Point" type="Node3D" parent="head/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.363079, 0.0188268, -0.974478)
 
 [node name="ladder_raycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0390505, -0.999237, 0, 0.999237, -0.0390505, 0, -0.0145242, -0.0612492)
