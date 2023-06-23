@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 global_script="*res://scripts/global_handler.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [input]
 
 forward={
