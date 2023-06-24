@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://c8iuvadkdynvi"]
+[gd_scene load_steps=83 format=3 uid="uid://c8iuvadkdynvi"]
 
 [ext_resource type="Texture2D" uid="uid://cxchffji0l3d1" path="res://model/assets/textures/Concrete_Wall_007_basecolor.jpg" id="1_53qw6"]
 [ext_resource type="Texture2D" uid="uid://bs8s4gprehoqi" path="res://model/assets/textures/Concrete_Wall_007_ambientOcclusion.jpg" id="2_elnmt"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://cw1ftw2yf13w1" path="res://scenes/entities/dummy.tscn" id="26_6sxmg"]
 [ext_resource type="PackedScene" uid="uid://bdspws4pwrxep" path="res://scenes/entities/tic_tac_enemy.tscn" id="27_ee11t"]
 [ext_resource type="PackedScene" uid="uid://brkitvo6d22fj" path="res://UI/main_menu.tscn" id="28_aq16a"]
+[ext_resource type="PackedScene" uid="uid://bgkyyxecewegx" path="res://scenes/pickups/ammo_pickup_01.tscn" id="29_plo03"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pua18"]
 ground_bottom_color = Color(0.0823529, 0.0666667, 0.0470588, 1)
@@ -1007,5 +1008,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18506, 3.28872, -5.73368)
 [node name="Player" parent="." instance=ExtResource("25_5xfrb")]
 
 [node name="main_menu" parent="." instance=ExtResource("28_aq16a")]
+
+[node name="ammo_pickup_01" parent="." instance=ExtResource("29_plo03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.50369, 0.258615, 0)
+ammo_type = 1
+quantity = 20
+
+[node name="ammo_pickup_02" parent="." instance=ExtResource("29_plo03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.50369, 0.258615, 3.57757)
+ammo_type = 3
+quantity = 50
 
 [editable path="MovingPlatform2"]
