@@ -44,6 +44,12 @@ var jetpackEnabled = false
 var jetpack_hold = 0.0
 const hold_time = 0.3
 
+# AMMO VARIABLES ********************
+var player_standard_ammo = 100
+var player_heavy_ammo = 100
+var player_special_ammo = 100
+var player_sniper_ammo = 100
+
 var timer = Timer.new()
 var effect = Vector3(0, -5, -5)
 var cameraZoom = 0.0
@@ -310,3 +316,39 @@ func _process(delta):
 	#bullet_origin.transform.origin = $head/Camera3D.transform.origin
 	
 
+enum EAmmoType {standard, heavy, special, sniper}
+# i guess we should not have two same enums here and in ammo_pickup_01??
+func add_ammo(ammo_type: EAmmoType, quantity):
+#something wrong with match statement, does not work properly ??
+#	match typeof(ammo_type):
+#		EAmmoType.standard:
+#			player_standard_ammo += quantity
+#			prints('standard ammo added')
+#		EAmmoType.heavy:
+#			player_heavy_ammo += quantity
+#			prints('heavy ammo added')
+#
+#		EAmmoType.special:
+#			player_special_ammo += quantity
+#			prints('special ammo added')
+#
+#		EAmmoType.sniper:
+#			player_sniper_ammo += quantity
+#			prints('sniper ammo added')
+#		_:
+#			prints('default value')
+	if ammo_type == EAmmoType.standard:
+		player_standard_ammo += quantity
+		prints('standard ammo added')
+	elif ammo_type == EAmmoType.heavy:
+		player_heavy_ammo += quantity
+		prints('heavy ammo added')
+	elif ammo_type == EAmmoType.special:
+		player_special_ammo += quantity
+		prints('special ammo added')
+	elif ammo_type == EAmmoType.sniper:
+		player_sniper_ammo += quantity
+		prints('sniper ammo added')
+		
+	
+			
