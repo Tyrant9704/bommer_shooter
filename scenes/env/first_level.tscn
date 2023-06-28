@@ -1015,8 +1015,17 @@ ammo_type = 1
 quantity = 20
 
 [node name="ammo_pickup_02" parent="." instance=ExtResource("29_plo03")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.50369, 0.258615, 3.57757)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.1262, 0.258615, 3.57757)
 ammo_type = 3
+quantity = 50
+
+[node name="ammo_pickup_03" parent="." instance=ExtResource("29_plo03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.27706, 0.258615, 5.98853)
+ammo_type = 2
+quantity = 50
+
+[node name="ammo_pickup_04" parent="." instance=ExtResource("29_plo03")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.85759, 0.240641, 8.31779)
 quantity = 50
 
 [editable path="MovingPlatform2"]
