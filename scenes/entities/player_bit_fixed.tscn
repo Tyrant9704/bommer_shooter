@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b086gn4fodijm"]
+[gd_scene load_steps=12 format=3 uid="uid://b086gn4fodijm"]
 
 [ext_resource type="Script" path="res://scripts/player_bit_fixed.gd" id="1_okjq5"]
 [ext_resource type="PackedScene" uid="uid://chkujett01dfi" path="res://scenes/guns/m_1911v_3.tscn" id="2_rgbra"]
+[ext_resource type="Script" path="res://scenes/entities/camera_shake.gd" id="2_sui3d"]
 [ext_resource type="PackedScene" path="res://scenes/guns/weapon_3.tscn" id="4_2vcg2"]
 [ext_resource type="PackedScene" uid="uid://bnpupwfw72re0" path="res://scenes/guns/shotgun.tscn" id="5_rwsmd"]
 [ext_resource type="PackedScene" uid="uid://dt4wenwipsixw" path="res://scenes/guns/m_1911_alt.tscn" id="6_ce3fw"]
@@ -12,6 +13,12 @@
 albedo_color = Color(1, 0, 1, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0t6hj"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8uqm5"]
+noise_type = 0
+frequency = 0.007
+fractal_octaves = 4
+fractal_gain = 1.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ojmw0"]
 font_size = 30
@@ -35,6 +42,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71695, 0)
 [node name="Camera3D" type="Camera3D" parent="head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.289)
 current = true
+script = ExtResource("2_sui3d")
+trauma_reduction_rate = 1.5
+noise = SubResource("FastNoiseLite_8uqm5")
 
 [node name="Control" type="Control" parent="head/Camera3D"]
 layout_mode = 3
