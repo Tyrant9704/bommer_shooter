@@ -44,6 +44,14 @@ var jetpackEnabled = false
 var jetpack_hold = 0.0
 const hold_time = 0.3
 
+# landing variable (for checking if player just landed)
+var landing : bool
+# used for counting falling velocity for landing trauma
+var fallVelocity := 0.0
+# used for minimum jump trauma (camera shake)
+var minFallVelocity := 0.4
+
+
 # AMMO VARIABLES ********************
 var player_standard_ammo = 100
 var player_heavy_ammo = 100
@@ -309,6 +317,20 @@ func _process(delta):
 			velocity.x = move_toward(velocity.x, 0, speed * delta * 6)
 			velocity.z = move_toward(velocity.z, 0, speed * delta * 6)
 
+# -------------- landing (camera shake / sfx) -----------------
+	fallVelocity += -velocity.y * delta
+	if is_on_floor():
+		if landing:
+			if(camera.has_method('add_trauma')):
+				prints(fallVelocity)
+#				camera.add_trauma(0.5)
+				camera.add_trauma(fallVelocity, 2)
+#			$LandSound.play()
+			landing = false
+			fallVelocity = minFallVelocity
+	else:
+		if !landing:
+			landing = true
 
 	move_and_slide()
 
