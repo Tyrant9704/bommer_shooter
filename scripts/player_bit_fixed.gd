@@ -324,7 +324,7 @@ func _process(delta):
 			if(camera.has_method('add_trauma')):
 				prints(fallVelocity)
 #				camera.add_trauma(0.5)
-				camera.add_trauma(fallVelocity, 2)
+				camera.add_trauma(fallVelocity, 2, true)
 #			$LandSound.play()
 			landing = false
 			fallVelocity = minFallVelocity
