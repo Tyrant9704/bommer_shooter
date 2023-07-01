@@ -32,6 +32,7 @@ var player_pos = 'stand'
 
 
 const MOUSE_SENSITIVITY = 0.1
+var Menu_mode = true
 
 # jetpack variables
 var maxJetpackEnergy = 100
@@ -42,6 +43,20 @@ var canFly = true
 var jetpackEnabled = false
 var jetpack_hold = 0.0
 const hold_time = 0.3
+
+# landing variable (for checking if player just landed)
+var landing : bool
+# used for counting falling velocity for landing trauma
+var fallVelocity := 0.0
+# used for minimum jump trauma (camera shake)
+var minFallVelocity := 0.4
+
+
+# AMMO VARIABLES ********************
+var player_standard_ammo = 100
+var player_heavy_ammo = 100
+var player_special_ammo = 100
+var player_sniper_ammo = 100
 
 var timer = Timer.new()
 var effect = Vector3(0, -5, -5)
@@ -75,6 +90,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 4 # mu
 
 @onready var grenade_point = $head/Camera3D/Grenade_Point
 
+@onready var landing_sound = $landing_sound
+
+
 # dziala to?  xd
 #func update_jetpackLabel_col():
 #	jetpackLabel.label_settings.font_color = currentJetpackEnergy
@@ -102,9 +120,13 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"): #esc key
 		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			Menu_mode = false
+			prints(Menu_mode)
 			# enable ingame HUD
 		else:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			Menu_mode = true
+			prints(Menu_mode)
 			# disable ingame HUD
 			# add menu screen UI
 		
@@ -116,43 +138,45 @@ func _input(event):
 			neck.rotation.x = clamp(neck.rotation.x, deg_to_rad(-90), deg_to_rad(90))
 	
 	# handle weapon slots
-	if Input.is_action_just_pressed('weapon_slot_1'):
-		desired_weapon = weapons[0]
-		_weapon_switcher()
-	if Input.is_action_just_pressed("weapon_slot_2"):
-		desired_weapon = weapons[1]
-		_weapon_switcher()
-	if Input.is_action_just_pressed("weapon_slot_3"):
-		desired_weapon = weapons[2]
-		_weapon_switcher()
-	if Input.is_action_just_pressed("weapon_slot_4"):
-		desired_weapon = weapons[3]
-		_weapon_switcher()
+	if !Menu_mode:
+		if Input.is_action_just_pressed('weapon_slot_1'):
+			desired_weapon = weapons[0]
+			_weapon_switcher()
+		if Input.is_action_just_pressed("weapon_slot_2"):
+			desired_weapon = weapons[1]
+			_weapon_switcher()
+		if Input.is_action_just_pressed("weapon_slot_3"):
+			desired_weapon = weapons[2]
+			_weapon_switcher()
+		if Input.is_action_just_pressed("weapon_slot_4"):
+			desired_weapon = weapons[3]
+			_weapon_switcher()
 		
 	# BASIC GRENADE TOSS
 	# when using middle mouse button, there is a bug - we throw multiple grenades
 	# it happens because of multiple event firing
 	# changed grenade throw button to G for now...
 	# holding G for longer time adds delta time to GRENADE_THROW_FORCE in process function
-	if Input.is_action_just_released("alt_grenade"):
-		
-		if grenades > 0:
-			grenades -=1
-			prints(grenades)
+	if !Menu_mode:
+		if Input.is_action_just_released("alt_grenade"):
 			
-			var grenade_clone
-			
-			if current_grenade == grenadesArr[0]:
-				grenade_clone = grenade_scene.instantiate()
-			elif current_grenade == grenadesArr[1]:
-				grenade_clone = grenade_scene_02.instantiate()
-			
-			grenade_clone.global_transform = grenade_point.global_transform
-			get_tree().root.add_child(grenade_clone)
-			grenade_clone.apply_central_impulse(-grenade_clone.global_transform.basis.z * (speed / 10) * GRENADE_THROW_FORCE)
-			
-		#reset to minimum throw force
-		GRENADE_THROW_FORCE = 15
+			if grenades > 0:
+				grenades -=1
+				prints(grenades)
+				
+				var grenade_clone
+				
+				if current_grenade == grenadesArr[0]:
+					grenade_clone = grenade_scene.instantiate()
+				elif current_grenade == grenadesArr[1]:
+					grenade_clone = grenade_scene_02.instantiate()
+				
+				grenade_clone.global_transform = grenade_point.global_transform
+				get_tree().root.add_child(grenade_clone)
+				grenade_clone.apply_central_impulse(-grenade_clone.global_transform.basis.z * (speed / 10) * GRENADE_THROW_FORCE)
+				
+			#reset to minimum throw force
+			GRENADE_THROW_FORCE = 15
 		
 	
 
@@ -296,6 +320,23 @@ func _process(delta):
 			velocity.x = move_toward(velocity.x, 0, speed * delta * 6)
 			velocity.z = move_toward(velocity.z, 0, speed * delta * 6)
 
+# -------------- landing (camera shake / sfx) -----------------
+	fallVelocity += -velocity.y * delta
+	if is_on_floor():
+		if landing:
+			if(camera.has_method('add_trauma')):
+				prints(fallVelocity)
+#				camera.add_trauma(0.5)
+				camera.add_trauma(fallVelocity, 2, true)
+				
+				landing_sound.pitch_scale = randf_range(0.8, 1.4)
+				landing_sound.play()
+				
+			landing = false
+			fallVelocity = minFallVelocity
+	else:
+		if !landing:
+			landing = true
 
 	move_and_slide()
 
@@ -303,3 +344,39 @@ func _process(delta):
 	#bullet_origin.transform.origin = $head/Camera3D.transform.origin
 	
 
+enum EAmmoType {standard, heavy, special, sniper}
+# i guess we should not have two same enums here and in ammo_pickup_01??
+func add_ammo(ammo_type: EAmmoType, quantity):
+#something wrong with match statement, does not work properly ??
+#	match typeof(ammo_type):
+#		EAmmoType.standard:
+#			player_standard_ammo += quantity
+#			prints('standard ammo added')
+#		EAmmoType.heavy:
+#			player_heavy_ammo += quantity
+#			prints('heavy ammo added')
+#
+#		EAmmoType.special:
+#			player_special_ammo += quantity
+#			prints('special ammo added')
+#
+#		EAmmoType.sniper:
+#			player_sniper_ammo += quantity
+#			prints('sniper ammo added')
+#		_:
+#			prints('default value')
+	if ammo_type == EAmmoType.standard:
+		player_standard_ammo += quantity
+		prints('standard ammo added')
+	elif ammo_type == EAmmoType.heavy:
+		player_heavy_ammo += quantity
+		prints('heavy ammo added')
+	elif ammo_type == EAmmoType.special:
+		player_special_ammo += quantity
+		prints('special ammo added')
+	elif ammo_type == EAmmoType.sniper:
+		player_sniper_ammo += quantity
+		prints('sniper ammo added')
+		
+	
+			

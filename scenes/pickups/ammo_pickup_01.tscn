@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://bgkyyxecewegx"]
+
+[ext_resource type="Script" path="res://scenes/pickups/ammo_pickup_01.gd" id="1_4urx1"]
+[ext_resource type="AudioStream" uid="uid://dmlds2ffsgi0" path="res://assets/audio/reload.wav" id="2_ytyae"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpnt7"]
+albedo_color = Color(0.0470588, 0.407843, 0.67451, 1)
+metallic = 1.0
+roughness = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_80qyo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tij6t"]
+albedo_color = Color(0.384314, 0, 0.639216, 1)
+metallic = 1.0
+roughness = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_sgwhq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_63q3s"]
+albedo_color = Color(0.0470588, 0.619608, 0.254902, 1)
+metallic = 1.0
+roughness = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_plrq0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j26se"]
+albedo_color = Color(0.741176, 0, 0.180392, 1)
+metallic = 1.0
+roughness = 0.2
+
+[sub_resource type="BoxMesh" id="BoxMesh_3b1hu"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k5es7"]
+size = Vector3(1, 0.453155, 0.625177)
+
+[node name="ammo_pickup_01" type="Node3D"]
+script = ExtResource("1_4urx1")
+
+[node name="standardAmmoBox" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.433257, 0, 0, 0, 0.590664, 0, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_rpnt7")
+mesh = SubResource("BoxMesh_80qyo")
+
+[node name="heavyAmmoBox" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.433257, 0, 0, 0, 0.590664, 0, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_tij6t")
+mesh = SubResource("BoxMesh_sgwhq")
+
+[node name="specialAmmoBox" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.433257, 0, 0, 0, 0.590664, 0, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_63q3s")
+mesh = SubResource("BoxMesh_plrq0")
+
+[node name="sniperAmmoBox" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.433257, 0, 0, 0, 0.590664, 0, 0, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_j26se")
+mesh = SubResource("BoxMesh_3b1hu")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_k5es7")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ytyae")
+volume_db = 15.0
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
