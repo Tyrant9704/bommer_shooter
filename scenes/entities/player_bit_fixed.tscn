@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b086gn4fodijm"]
+[gd_scene load_steps=13 format=3 uid="uid://b086gn4fodijm"]
 
 [ext_resource type="Script" path="res://scripts/player_bit_fixed.gd" id="1_okjq5"]
 [ext_resource type="PackedScene" uid="uid://chkujett01dfi" path="res://scenes/guns/m_1911v_3.tscn" id="2_rgbra"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" path="res://scenes/guns/weapon_3.tscn" id="4_2vcg2"]
 [ext_resource type="PackedScene" uid="uid://bnpupwfw72re0" path="res://scenes/guns/shotgun.tscn" id="5_rwsmd"]
 [ext_resource type="PackedScene" uid="uid://dt4wenwipsixw" path="res://scenes/guns/m_1911_alt.tscn" id="6_ce3fw"]
+[ext_resource type="AudioStream" uid="uid://bqn6n3vwokx8m" path="res://assets/audio/fall.wav" id="7_40yt0"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_w7i0t"]
 
@@ -127,3 +128,7 @@ collision_mask = 24
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 mix_target = 1
+
+[node name="landing_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_40yt0")
+volume_db = -5.0

@@ -89,9 +89,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 4 # mu
 @onready var hand = $head/hand
 
 @onready var grenade_point = $head/Camera3D/Grenade_Point
-@onready var player_audio = $AudioStreamPlayer
 
-var fallSFX = preload("res://assets/audio/fall.wav")
+@onready var landing_sound = $landing_sound
+
 
 # dziala to?  xd
 #func update_jetpackLabel_col():
@@ -328,10 +328,10 @@ func _process(delta):
 				prints(fallVelocity)
 #				camera.add_trauma(0.5)
 				camera.add_trauma(fallVelocity, 2, true)
-				player_audio.stream = fallSFX
-				player_audio.pitch_scale = randf_range(0.8, 1.4)
-				player_audio.play()
-#			$LandSound.play()
+				
+				landing_sound.pitch_scale = randf_range(0.8, 1.4)
+				landing_sound.play()
+				
 			landing = false
 			fallVelocity = minFallVelocity
 	else:
