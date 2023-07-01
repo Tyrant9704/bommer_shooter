@@ -15,6 +15,7 @@ var have_ammo = true
 @export var r_hand_pos_n = Vector3()
 @export var r_hand_rot_n = Vector3()
 
+@onready var camera_shake = $"../../Camera3D"
 @onready var camera = $"../../Camera3D/raycast_origin"
 @onready var ammo_count = $"../../Camera3D/Control/ammo_count"
 @onready var bullet_origin = $bullet_origin
@@ -97,6 +98,7 @@ func _fire():
 	var collider = bullet_origin.get_collider()
 	next_shot = false
 	if have_ammo:
+		camera_shake.add_trauma(0.5, 2)
 		if bullet_origin.get_collision_mask_value(5):
 			if bullet_origin.is_colliding():
 				next_shot = true
