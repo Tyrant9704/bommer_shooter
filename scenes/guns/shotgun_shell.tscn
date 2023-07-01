@@ -81,12 +81,12 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_flnb8")
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_kru6f"]
-height = 4.05173
-radius = 1.00152
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uusvg"]
+height = 0.079
+radius = 0.022
 
 [node name="shotgun_shell" type="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00397575, -5.96046e-08, 0.0009619)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00397575, -5.96046e-08, 0.0009619)
 top_level = true
 mass = 0.15
 inertia = Vector3(0.5, 0.5, 0.5)
@@ -94,20 +94,22 @@ continuous_cd = true
 script = ExtResource("1_m7rcd")
 
 [node name="Object_11" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)
 mesh = SubResource("ArrayMesh_h1mkf")
 skeleton = NodePath("")
 
 [node name="Object_12" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 2.30725, 0, 0, 0, 1, 0, 0.755955, 0)
+transform = Transform3D(0.02, 0, 0, 0, 0.046, 0, 0, 0, 0.02, 0, 0.0138306, 0)
 mesh = SubResource("ArrayMesh_6xbm0")
 skeleton = NodePath("")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
+autostart = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00147176, 1.08186, 0)
-shape = SubResource("CylinderShape3D_kru6f")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.21791e-05, 0.0208652, -0.000772741)
+shape = SubResource("CylinderShape3D_uusvg")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

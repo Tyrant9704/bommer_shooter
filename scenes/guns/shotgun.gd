@@ -3,6 +3,8 @@ extends Node3D
 @onready var raycast_container = $raycast_container
 @onready var raycast_origin = $"../../Camera3D/raycast_origin"
 @onready var shotgun = $body
+@onready var camera_shake = $"../../Camera3D"
+@onready var ammo_count = $"../../Camera3D/Control/ammo_count"
 
 @onready var bullet_hole = preload("res://scenes/env/bullet_hole.tscn")
 @onready var shotgun_shell = preload("res://scenes/guns/shotgun_shell.tscn")
@@ -11,6 +13,8 @@ extends Node3D
 var rot_normal = Vector3(0, 0, 0)
 @export var pos_aim = Vector3()
 @export var rot_aim = Vector3()
+
+var shell_v = Vector3(0, 0, -5)
 
 var spread = 10
 var ammo = 150
@@ -28,10 +32,17 @@ func _ready():
 func _process(delta):
 	raycast_container.global_transform.origin = raycast_origin.global_transform.origin
 	raycast_container.global_rotation = raycast_origin.global_rotation
+	
+	ammo_count.set_text('Ammo' + '' + var_to_str(ammo))
+	if ammo >= 1:
+		have_ammo
+	else:
+		have_ammo = false
 
 	if Input.is_action_just_pressed("LMB"):
 		if have_ammo && next_shot:
 			$AnimationPlayer.play('shoot')
+			$AudioStreamPlayer.play()
 			var recoil_p = Vector3(7, 0, 0)
 			var recoil_r = Vector3(0, 0, -1)
 			shotgun.transform.origin = shotgun.transform.origin.lerp(shotgun.transform.origin + recoil_p, LERP * delta)
@@ -40,12 +51,14 @@ func _process(delta):
 			var shell = shotgun_shell.instantiate()
 			shell.transform.origin = $body/Marker3D.transform.origin
 			$body/Marker3D.add_child(shell)
-			shell.scale = Vector3(0.1, 0.1, 0.1)
+			shell.apply_central_impulse(self.global_transform.basis * shell_v)
+			ammo -= 1
 			
 			
 			_fire()
 			_spread()
 		
+			camera_shake.add_trauma(0.5, 5)
 	if Input.is_action_pressed("RMB"):
 		shotgun.transform.origin =shotgun.transform.origin.lerp(pos_aim, LERP * delta)
 		shotgun.rotation =shotgun.rotation.lerp(rot_aim, LERP * delta)

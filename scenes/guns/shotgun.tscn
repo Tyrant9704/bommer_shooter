@@ -161,62 +161,48 @@ albedo_texture = ExtResource("3_vle6r")
 [sub_resource type="Animation" id="Animation_pdhfy"]
 resource_name = "shoot"
 length = 0.5
-tracks/0/type = "audio"
+step = 0.01
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer")
+tracks/0/path = NodePath("body/Muzzleflash:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("2_8iqwr")
-}],
-"times": PackedFloat32Array(-0.1)
+"times": PackedFloat32Array(0, 0.01, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
 }
-tracks/0/use_blend = true
-tracks/1/type = "value"
+tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("body/Muzzleflash:visible")
+tracks/1/path = NodePath("body/Object_9:position:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1.19975, -0.25, 0, 0.25, 0, 2.19938, -0.25, 0, 0.25, 0, 1.19975, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2)
 }
 tracks/2/type = "bezier"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("body/Object_9:position:x")
+tracks/2/path = NodePath("body/Object_9:position:y")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(1.19975, -0.25, 0, 0.25, 0, 2.19938, -0.25, 0, 0.25, 0, 1.19975, -0.25, 0, 0.25, 0),
+"points": PackedFloat32Array(0.367185, -0.25, 0, 0.25, 0, 0.367185, -0.25, 0, 0.25, 0, 0.367185, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.1, 0.2)
 }
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("body/Object_9:position:y")
+tracks/3/path = NodePath("body/Object_9:position:z")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0, 0),
-"points": PackedFloat32Array(0.367185, -0.25, 0, 0.25, 0, 0.367185, -0.25, 0, 0.25, 0, 0.367185, -0.25, 0, 0.25, 0),
-"times": PackedFloat32Array(0, 0.1, 0.2)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("body/Object_9:position:z")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0, 0.1, 0.2)
@@ -270,7 +256,7 @@ transform = Transform3D(0.0509148, 1.84587, -7.84905e-08, 7.84905e-08, -8.06854e
 light_color = Color(1, 0.647059, 0, 1)
 
 [node name="Marker3D" type="Marker3D" parent="body"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19653, 0.307327, -0.391579)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.887, -0.476, 0.0528188)
 
 [node name="raycast_container" type="Node3D" parent="."]
 top_level = true
@@ -315,7 +301,7 @@ libraries = {
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-volume_db = 11.565
+stream = ExtResource("2_8iqwr")
 max_polyphony = 4
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
