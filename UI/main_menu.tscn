@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://brkitvo6d22fj"]
+[gd_scene load_steps=11 format=3 uid="uid://brkitvo6d22fj"]
 
 [ext_resource type="Script" path="res://UI/main_menu.gd" id="1_shjtf"]
 [ext_resource type="Texture2D" uid="uid://cd70xfover6k4" path="res://assets/textures/ui/neon.png" id="2_44rr2"]
 [ext_resource type="Texture2D" uid="uid://cc0qcbv2oquwp" path="res://assets/textures/ui/papajbadass.png" id="3_a1agm"]
+[ext_resource type="Texture2D" uid="uid://ba8bw3huq3h1d" path="res://assets/textures/particles/smoke1.png" id="4_bf5n0"]
+[ext_resource type="Texture2D" uid="uid://bd002bd0hgm5s" path="res://assets/textures/particles/lightning2.png" id="5_jbvss"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l3nu6"]
 font_size = 46
@@ -11,6 +13,18 @@ outline_color = Color(1, 0.2, 0.807843, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_4hplp"]
 font_size = 10
+
+[sub_resource type="Curve" id="Curve_4n3qg"]
+_data = [Vector2(0, 0.288344), 0.0, 0.0, 0, 0, Vector2(0.60137, 0.766871), 0.0, 0.0, 0, 0, Vector2(1, 0.190184), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_hmnq1"]
+offsets = PackedFloat32Array(0.332362, 1)
+colors = PackedColorArray(0.279967, 0.279967, 0.279967, 1, 1, 1, 1, 0)
+
+[sub_resource type="Gradient" id="Gradient_r3urq"]
+offsets = PackedFloat32Array(0.169096, 0.718659, 1)
+colors = PackedColorArray(0.960784, 0.588235, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0)
 
 [node name="main_menu" type="Control"]
 layout_mode = 3
@@ -140,7 +154,7 @@ texture = ExtResource("2_44rr2")
 flip_h = true
 flip_v = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="PapaHandgun" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -154,6 +168,46 @@ grow_horizontal = 2
 grow_vertical = 0
 texture = ExtResource("3_a1agm")
 stretch_mode = 3
+
+[node name="smoke" type="CPUParticles2D" parent="PapaHandgun"]
+position = Vector2(159, 14)
+amount = 10
+lifetime = 3.0
+texture = ExtResource("4_bf5n0")
+direction = Vector2(0, -10)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+angle_max = 180.0
+scale_amount_min = 0.01
+scale_amount_max = 0.1
+scale_amount_curve = SubResource("Curve_4n3qg")
+color_ramp = SubResource("Gradient_hmnq1")
+
+[node name="eye" type="CPUParticles2D" parent="PapaHandgun"]
+position = Vector2(79, 53)
+texture = ExtResource("5_jbvss")
+direction = Vector2(0, -10)
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angle_max = 180.0
+scale_amount_min = 0.01
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_r3urq")
+
+[node name="eye2" type="CPUParticles2D" parent="PapaHandgun"]
+position = Vector2(102, 51)
+texture = ExtResource("5_jbvss")
+direction = Vector2(0, -10)
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angle_max = 180.0
+scale_amount_min = 0.01
+scale_amount_max = 0.1
+color_ramp = SubResource("Gradient_r3urq")
 
 [connection signal="button_up" from="VBoxContainer/Options" to="." method="_on_options_button_up"]
 [connection signal="button_up" from="VBoxContainer/Quit" to="." method="_on_quit_button_up"]
