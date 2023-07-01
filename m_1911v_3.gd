@@ -89,7 +89,7 @@ func _process(delta):
 
 	if reloaded and next_shot:
 		if Input.is_action_just_pressed("LMB"):
-			camera_shake.add_trauma(0.5, 2)
+			camera_shake.add_trauma(0.5, 5)
 			var collider = bullet_origin.get_collider()
 			$AnimationPlayer.play("m1911V3/shoot")
 			$Skeleton3D/BoneAttachment3D/M1911/GPUParticles3D.restart()
