@@ -17,6 +17,7 @@ var aim_state = 'not_aim'
 
 @onready var bullet_origin = $bullet_origin
 @onready var camera =$"../../Camera3D/raycast_origin"
+@onready var camera_shake = $"../../Camera3D"
 
 # we should probably move it to some ui controller in the future
 @onready var ammoCountLabel = $"../../Camera3D/Control/ammo_count"
@@ -88,6 +89,7 @@ func _process(delta):
 
 	if reloaded and next_shot:
 		if Input.is_action_just_pressed("LMB"):
+			camera_shake.add_trauma(0.5, 2)
 			var collider = bullet_origin.get_collider()
 			$AnimationPlayer.play("m1911V3/shoot")
 			$Skeleton3D/BoneAttachment3D/M1911/GPUParticles3D.restart()
