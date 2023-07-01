@@ -90,6 +90,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity") * 4 # mu
 
 @onready var grenade_point = $head/Camera3D/Grenade_Point
 
+@onready var landing_sound = $landing_sound
+
+
 # dziala to?  xd
 #func update_jetpackLabel_col():
 #	jetpackLabel.label_settings.font_color = currentJetpackEnergy
@@ -325,7 +328,10 @@ func _process(delta):
 				prints(fallVelocity)
 #				camera.add_trauma(0.5)
 				camera.add_trauma(fallVelocity, 2, true)
-#			$LandSound.play()
+				
+				landing_sound.pitch_scale = randf_range(0.8, 1.4)
+				landing_sound.play()
+				
 			landing = false
 			fallVelocity = minFallVelocity
 	else:
