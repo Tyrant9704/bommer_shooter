@@ -120,9 +120,7 @@ transform = Transform3D(0.999663, -0.0198001, -0.0167869, 0.0198001, 0.163412, 0
 visible = false
 
 [node name="shotgun" parent="head/joint" instance=ExtResource("5_rwsmd")]
-
 transform = Transform3D(-1.87085e-08, 0, -0.428, 0, 0.428, 0, 0.428, 0, -1.87085e-08, 0.649, -0.331, -0.981)
-
 
 [node name="ladder_raycast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0390505, -0.999237, 0, 0.999237, -0.0390505, 0, -0.0145242, -0.0612492)
