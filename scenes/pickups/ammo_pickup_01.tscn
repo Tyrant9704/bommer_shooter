@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://bgkyyxecewegx"]
 
 [ext_resource type="Script" path="res://scenes/pickups/ammo_pickup_01.gd" id="1_4urx1"]
-[ext_resource type="AudioStream" uid="uid://bfl72yctqwwhf" path="res://assets/audio/explosion_02.ogg" id="2_saspq"]
+[ext_resource type="AudioStream" uid="uid://dmlds2ffsgi0" path="res://assets/audio/reload.wav" id="2_ytyae"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rpnt7"]
 albedo_color = Color(0.0470588, 0.407843, 0.67451, 1)
@@ -66,8 +66,9 @@ mesh = SubResource("BoxMesh_3b1hu")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_k5es7")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_saspq")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ytyae")
+volume_db = 15.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
-[connection signal="finished" from="AudioStreamPlayer3D" to="." method="_on_audio_stream_player_3d_finished"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
