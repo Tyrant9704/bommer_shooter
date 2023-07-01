@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://dbqeqb3qru3mx"]
 
 [ext_resource type="Script" path="res://scenes/guns/scripts/shell.gd" id="1_7n81y"]
 [ext_resource type="ArrayMesh" uid="uid://4b6oef6u2qx5" path="res://model/bullet_caseobj.obj" id="1_iggw5"]
