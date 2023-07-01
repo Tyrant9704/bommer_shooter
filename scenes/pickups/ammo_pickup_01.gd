@@ -14,6 +14,7 @@ enum EAmmoType {standard, heavy, special, sniper}
 @export var quantity = 10
 
 @onready var audio = $AudioStreamPlayer3D
+@onready var audio_2 = $AudioStreamPlayer
 func _ready():
 	if ammo_type == EAmmoType.standard:
 		standard_ammo_box.visible = true
@@ -28,7 +29,8 @@ func _ready():
 func _on_area_3d_body_entered(body):
 	if body.has_method('add_ammo'):
 		body.add_ammo(ammo_type, quantity)
-		audio.play()
+#		audio.play()
+		audio_2.play()
 		standard_ammo_box.visible = false
 		heavy_ammo_box.visible = false
 		special_ammo_box.visible = false
@@ -38,3 +40,7 @@ func _on_area_3d_body_entered(body):
 
 func _on_audio_stream_player_3d_finished():
 		queue_free()		
+
+
+func _on_audio_stream_player_finished():
+		queue_free()	
