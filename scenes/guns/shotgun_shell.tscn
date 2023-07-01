@@ -1,4 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://0cydpygx01i3"]
+[gd_scene load_steps=9 format=3 uid="uid://3bf6ibwx36gr"]
+
+[ext_resource type="Script" path="res://scripts/shotgun_shell.gd" id="1_m7rcd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmaxe"]
 resource_name = "material_3"
@@ -79,19 +81,33 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_flnb8")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8q161"]
-points = PackedVector3Array(-0.0608763, 0.980131, 0.974783, -0.0608763, -0.57343, -0.974783, -0.212734, -0.571868, -0.91188, 0.7071, -0.580688, 0.7071, 0.7071, 0.98739, -0.7071, -0.974783, 0.980131, 0.0608763, -0.706964, -0.580751, 0.707156, -0.706964, 0.987452, -0.707156, -0.974783, -0.57343, -0.0608763, 0.7071, -0.580688, -0.7071, 0.974783, 0.980131, 0.0608763, 0.7071, 0.98739, 0.7071, 0.974783, -0.57343, -0.0608763, 0.0608763, 0.980131, -0.974783, 0.0608763, -0.57343, 0.974783, -0.706964, 0.987452, 0.707156, -0.706964, -0.580751, -0.707156, -0.974783, 0.980131, -0.0608763, -0.974783, -0.57343, 0.0608763, 0.0608763, 0.980131, 0.974783, 0.0608763, -0.57343, -0.974783, 0.974783, 0.980131, -0.0608763, 0.974783, -0.57343, 0.0608763, -0.0608763, 0.980131, -0.974783, -0.0608763, -0.57343, 0.974783)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kru6f"]
+height = 4.05173
+radius = 1.00152
 
-[node name="Cylinder001_3" type="RigidBody3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.325, 0, 0, 0, 0.1, 0.00397575, -5.96046e-08, 0.0009619)
+[node name="shotgun_shell" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00397575, -5.96046e-08, 0.0009619)
+top_level = true
+mass = 0.15
+inertia = Vector3(0.5, 0.5, 0.5)
+continuous_cd = true
+script = ExtResource("1_m7rcd")
 
 [node name="Object_11" type="MeshInstance3D" parent="."]
 mesh = SubResource("ArrayMesh_h1mkf")
 skeleton = NodePath("")
 
 [node name="Object_12" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.30725, 0, 0, 0, 1, 0, 0.755955, 0)
 mesh = SubResource("ArrayMesh_6xbm0")
 skeleton = NodePath("")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_8q161")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00147176, 1.08186, 0)
+shape = SubResource("CylinderShape3D_kru6f")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
