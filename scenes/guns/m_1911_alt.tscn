@@ -1,10 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://dt4wenwipsixw"]
+[gd_scene load_steps=30 format=3 uid="uid://dt4wenwipsixw"]
 
 [ext_resource type="Texture2D" uid="uid://bt6l10bqpx2y7" path="res://model/Tex_0008_1.png" id="1_mat4x"]
 [ext_resource type="Script" path="res://scenes/guns/scripts/m_1911_alt.gd" id="1_rh5rs"]
 [ext_resource type="Texture2D" uid="uid://2wah7irs2nrp" path="res://assets/muzzleflash.png" id="3_7ju6c"]
 [ext_resource type="ArrayMesh" uid="uid://dno4ktmg2qr8u" path="res://model/muzzleflash.obj" id="4_unnrw"]
-[ext_resource type="AudioStream" uid="uid://d0qpepvuxpxco" path="res://assets/audio/1911-.45-ACP-Close-Single-Gunshot-A-www.fesliyanstudios.com.ogg" id="5_v7hvk"]
+[ext_resource type="AudioStream" uid="uid://qjosng4uwisc" path="res://assets/audio/9mm-pistol-shoot-short-reverb-7152.mp3" id="5_gvwjr"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5qkhf"]
 albedo_texture = ExtResource("1_mat4x")
@@ -274,6 +274,17 @@ blend_mode = 1
 shading_mode = 0
 albedo_texture = ExtResource("3_7ju6c")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mhj6"]
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+specular_mode = 2
+albedo_color = Color(0.670588, 0.517647, 0.027451, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_on0tn"]
+flip_faces = true
+size = Vector2(0.005, 0.005)
+
 [sub_resource type="Animation" id="Animation_ev4q7"]
 resource_name = "l_fire"
 length = 0.2
@@ -335,6 +346,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [false, true, false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("l_hand/M1911/flash:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [false, true, false]
+}
 
 [sub_resource type="Animation" id="Animation_6u4x2"]
 resource_name = "r_fire"
@@ -392,6 +415,18 @@ tracks/4/path = NodePath("r-hand/M1911/OmniLight3D:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("r-hand/M1911/flash:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.15),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
@@ -466,6 +501,28 @@ light_color = Color(1, 0.647059, 0, 1)
 [node name="r_shell" type="Node3D" parent="r-hand/M1911"]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, -0.0130934, -0.108191, 0.0627005)
 
+[node name="flash" type="CPUParticles3D" parent="r-hand/M1911"]
+transform = Transform3D(0.341, -0.365677, 0, -1.59843e-08, -1.49056e-08, -0.5, 0.365677, 0.341, -2.18557e-08, -6.20037e-05, -0.226011, 0.0533455)
+material_override = SubResource("StandardMaterial3D_5mhj6")
+emitting = false
+amount = 50
+lifetime = 0.14
+one_shot = true
+explosiveness = 1.0
+randomness = 0.75
+lifetime_randomness = 0.29
+mesh = SubResource("QuadMesh_on0tn")
+emission_shape = 1
+emission_sphere_radius = 0.05
+particle_flag_rotate_y = true
+direction = Vector3(0, 0, 50)
+gravity = Vector3(0, 0.1, 0)
+initial_velocity_min = 0.3
+initial_velocity_max = 0.59
+angular_velocity_min = 5.0
+angular_velocity_max = 11.84
+color = Color(1, 0.603922, 0.152941, 1)
+
 [node name="l_hand" type="Node3D" parent="."]
 transform = Transform3D(0.681998, -0.731354, 0, 0.731354, 0.681998, 0, 0, 0, 1, 0.156, 0.274, -0.011)
 
@@ -521,13 +578,35 @@ light_color = Color(1, 0.647059, 0, 1)
 [node name="l_shell" type="Node3D" parent="l_hand/M1911"]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, -0.00113516, -0.112096, 0.0668547)
 
+[node name="flash" type="CPUParticles3D" parent="l_hand/M1911"]
+transform = Transform3D(0.340999, 0.365677, 0, 1.59843e-08, -1.49055e-08, -0.5, -0.365677, 0.340999, -2.18557e-08, -7.03335e-05, -0.226861, 0.0523136)
+material_override = SubResource("StandardMaterial3D_5mhj6")
+emitting = false
+amount = 50
+lifetime = 0.14
+one_shot = true
+explosiveness = 1.0
+randomness = 0.75
+lifetime_randomness = 0.29
+mesh = SubResource("QuadMesh_on0tn")
+emission_shape = 1
+emission_sphere_radius = 0.05
+particle_flag_rotate_y = true
+direction = Vector3(0, 0, 50)
+gravity = Vector3(0, 0.1, 0)
+initial_velocity_min = 0.3
+initial_velocity_max = 0.59
+angular_velocity_min = 5.0
+angular_velocity_max = 11.84
+color = Color(1, 0.603922, 0.152941, 1)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_cklda")
 }
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_v7hvk")
+stream = ExtResource("5_gvwjr")
 max_polyphony = 8
 
 [node name="bullet_origin" type="RayCast3D" parent="."]

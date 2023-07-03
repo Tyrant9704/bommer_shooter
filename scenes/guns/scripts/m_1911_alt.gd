@@ -74,19 +74,21 @@ func _process(delta):
 				_fire()
 				var case = shell.instantiate()
 				case.transform.origin = l_shell.transform.origin
-				l_shell.add_child(case)
+				get_tree().get_root().add_child(case)
+				case.global_transform.origin = l_shell.global_transform.origin
 				case.apply_central_impulse(self.global_transform.basis * case_v)
 				case.apply_torque_impulse(case_r)
 				current_ammo -= 1
-				
+				$l_hand/M1911/flash.restart()
 			else:
 				$"r-hand".transform.origin = $"r-hand".transform.origin.lerp(r_hand_pos - recoil_z, LERP * delta)
 				$"r-hand".rotation = $"r-hand".rotation.lerp(r_hand_rot - recoil_r, LERP * delta)
 				$AnimationPlayer.play("r_fire")
 				_fire()
 				var case = shell.instantiate()
-				case.transform.origin = r_shell.transform.origin
-				r_shell.add_child(case)
+				get_tree().get_root().add_child(case)
+				case.global_transform.origin = r_shell.global_transform.origin
+				case.rotation = r_shell.rotation
 				case.apply_central_impulse(self.global_transform.basis * case_v)
 				case.apply_torque_impulse(case_r)
 				current_ammo -= 1
