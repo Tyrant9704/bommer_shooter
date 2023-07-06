@@ -1,0 +1,38 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmut850t07k18"]
+
+[ext_resource type="Script" path="res://scenes/entities/test_target.gd" id="1_c2vgn"]
+[ext_resource type="Texture2D" uid="uid://c2dsmruut55i0" path="res://model/assets/Metal_Grill_004_basecolor.jpg" id="1_obcf2"]
+[ext_resource type="AudioStream" uid="uid://rliw7xngnwig" path="res://assets/audio/beep_01.ogg" id="2_yd65u"]
+[ext_resource type="Texture2D" uid="uid://dcytsg4rotqo5" path="res://model/assets/Metal_Grill_004_metallic.jpg" id="2_yuwli"]
+[ext_resource type="Texture2D" uid="uid://c6ly5x0v4ylsg" path="res://model/assets/Metal_Grill_004_normal.jpg" id="3_ncabb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3bpq"]
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("1_obcf2")
+metallic = 1.0
+metallic_texture = ExtResource("2_yuwli")
+roughness = 0.1
+normal_enabled = true
+normal_texture = ExtResource("3_ncabb")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o6p4o"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nhxqx"]
+
+[node name="test_target" type="Node3D" groups=["target"]]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." groups=["target"]]
+transform = Transform3D(1, 0, 0, 0, -1.17012e-09, -1, 0, 0.0267693, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_q3bpq")
+mesh = SubResource("CylinderMesh_o6p4o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" groups=["target"]]
+script = ExtResource("1_c2vgn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" groups=["target"]]
+shape = SubResource("CylinderShape3D_nhxqx")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_yd65u")
+volume_db = 1.0
+max_polyphony = 10

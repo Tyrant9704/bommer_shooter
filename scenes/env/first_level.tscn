@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://c8iuvadkdynvi"]
+[gd_scene load_steps=89 format=3 uid="uid://c8iuvadkdynvi"]
 
 [ext_resource type="Texture2D" uid="uid://cxchffji0l3d1" path="res://model/assets/textures/Concrete_Wall_007_basecolor.jpg" id="1_53qw6"]
 [ext_resource type="Texture2D" uid="uid://bs8s4gprehoqi" path="res://model/assets/textures/Concrete_Wall_007_ambientOcclusion.jpg" id="2_elnmt"]
@@ -9,9 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://c6eud6q4p0ht7" path="res://model/assets/textures/Ground_Dirt_009_Height.png" id="7_8gnhf"]
 [ext_resource type="Texture2D" uid="uid://de2ruwf2bqodu" path="res://model/assets/textures/Ground_Dirt_009_Normal.jpg" id="8_kdcom"]
 [ext_resource type="Texture2D" uid="uid://clvi0nnhoobgg" path="res://model/assets/textures/Ground_Dirt_009_Roughness.jpg" id="9_j5oix"]
-[ext_resource type="Texture2D" uid="uid://c2dsmruut55i0" path="res://model/assets/Metal_Grill_004_basecolor.jpg" id="10_xoisl"]
-[ext_resource type="Texture2D" uid="uid://dcytsg4rotqo5" path="res://model/assets/Metal_Grill_004_metallic.jpg" id="11_ycdow"]
-[ext_resource type="Texture2D" uid="uid://c6ly5x0v4ylsg" path="res://model/assets/Metal_Grill_004_normal.jpg" id="12_f4xuc"]
 [ext_resource type="Texture2D" uid="uid://q6neqklvcovm" path="res://model/assets/Metal_Grill_004_roughness.jpg" id="13_yssfq"]
 [ext_resource type="Texture2D" uid="uid://cklbwxm604m4m" path="res://model/assets/Metal_Panels_009_metallic.jpg" id="14_q5d5r"]
 [ext_resource type="Texture2D" uid="uid://d3u2bwjn283b5" path="res://model/assets/Metal_Panels_009_roughness.jpg" id="15_cfgna"]
@@ -29,6 +26,12 @@
 [ext_resource type="PackedScene" uid="uid://bdspws4pwrxep" path="res://scenes/entities/tic_tac_enemy.tscn" id="27_ee11t"]
 [ext_resource type="PackedScene" uid="uid://brkitvo6d22fj" path="res://UI/main_menu.tscn" id="28_aq16a"]
 [ext_resource type="PackedScene" uid="uid://bgkyyxecewegx" path="res://scenes/pickups/ammo_pickup_01.tscn" id="29_plo03"]
+[ext_resource type="Script" path="res://scenes/entities/test_target.gd" id="30_7e0jr"]
+[ext_resource type="PackedScene" uid="uid://cmut850t07k18" path="res://scenes/entities/test_target.tscn" id="30_mkwdp"]
+[ext_resource type="Texture2D" uid="uid://c2dsmruut55i0" path="res://model/assets/Metal_Grill_004_basecolor.jpg" id="30_wjck8"]
+[ext_resource type="Texture2D" uid="uid://dcytsg4rotqo5" path="res://model/assets/Metal_Grill_004_metallic.jpg" id="31_d0gcw"]
+[ext_resource type="AudioStream" uid="uid://rliw7xngnwig" path="res://assets/audio/beep_01.ogg" id="31_qss7p"]
+[ext_resource type="Texture2D" uid="uid://c6ly5x0v4ylsg" path="res://model/assets/Metal_Grill_004_normal.jpg" id="32_j0vuk"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pua18"]
 ground_bottom_color = Color(0.0823529, 0.0666667, 0.0470588, 1)
@@ -113,25 +116,25 @@ uv1_scale = Vector3(5, 2, 2)
 [sub_resource type="BoxMesh" id="BoxMesh_71tuu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vhty3"]
-albedo_texture = ExtResource("10_xoisl")
+albedo_texture = ExtResource("30_wjck8")
 metallic = 1.0
-metallic_texture = ExtResource("11_ycdow")
+metallic_texture = ExtResource("31_d0gcw")
 roughness_texture = ExtResource("13_yssfq")
 normal_enabled = true
-normal_texture = ExtResource("12_f4xuc")
+normal_texture = ExtResource("32_j0vuk")
 uv1_scale = Vector3(6, 3, 3)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_d8rm7"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4cc5"]
-albedo_texture = ExtResource("10_xoisl")
+albedo_texture = ExtResource("30_wjck8")
 metallic = 1.0
 metallic_texture = ExtResource("14_q5d5r")
 roughness = 0.5
 roughness_texture = ExtResource("15_cfgna")
 normal_enabled = true
-normal_texture = ExtResource("12_f4xuc")
+normal_texture = ExtResource("32_j0vuk")
 uv1_scale = Vector3(15, 5, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpem5"]
@@ -158,12 +161,12 @@ uv1_scale = Vector3(5, 1, 1)
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vh7jv"]
-albedo_texture = ExtResource("10_xoisl")
+albedo_texture = ExtResource("30_wjck8")
 metallic = 1.0
-metallic_texture = ExtResource("11_ycdow")
+metallic_texture = ExtResource("31_d0gcw")
 roughness_texture = ExtResource("13_yssfq")
 normal_enabled = true
-normal_texture = ExtResource("12_f4xuc")
+normal_texture = ExtResource("32_j0vuk")
 uv1_scale = Vector3(5, 5, 5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_27eb7"]
@@ -272,13 +275,26 @@ data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wsoue"]
 albedo_texture = ExtResource("18_67icx")
 metallic = 1.0
-metallic_texture = ExtResource("11_ycdow")
+metallic_texture = ExtResource("31_d0gcw")
 roughness = 0.5
 normal_enabled = true
 normal_texture = ExtResource("20_ky2bb")
 uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_2om8o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3bpq"]
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("30_wjck8")
+metallic = 1.0
+metallic_texture = ExtResource("31_d0gcw")
+roughness = 0.1
+normal_enabled = true
+normal_texture = ExtResource("32_j0vuk")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o6p4o"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_nhxqx"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -1027,5 +1043,48 @@ quantity = 50
 [node name="ammo_pickup_04" parent="." instance=ExtResource("29_plo03")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.85759, 0.240641, 8.31779)
 quantity = 50
+
+[node name="targets" type="Node" parent="."]
+
+[node name="test_target" parent="targets" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.54496, 13.3171)
+
+[node name="test_target3" type="Node3D" parent="targets" groups=["target"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.83639, 2.54496, 13.3171)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="targets/test_target3" groups=["target"]]
+transform = Transform3D(1, 0, 0, 0, -1.17012e-09, -1, 0, 0.0267693, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_q3bpq")
+mesh = SubResource("CylinderMesh_o6p4o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="targets/test_target3/MeshInstance3D" groups=["target"]]
+script = ExtResource("30_7e0jr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="targets/test_target3/MeshInstance3D/StaticBody3D" groups=["target"]]
+shape = SubResource("CylinderShape3D_nhxqx")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="targets/test_target3"]
+stream = ExtResource("31_qss7p")
+volume_db = 1.0
+max_polyphony = 10
+
+[node name="test_target2" type="Node3D" parent="targets" groups=["target"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67603, 1.55613, 12.7714)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="targets/test_target2" groups=["target"]]
+transform = Transform3D(1, 0, 0, 0, -1.17012e-09, -1, 0, 0.0267693, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_q3bpq")
+mesh = SubResource("CylinderMesh_o6p4o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="targets/test_target2/MeshInstance3D" groups=["target"]]
+script = ExtResource("30_7e0jr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="targets/test_target2/MeshInstance3D/StaticBody3D" groups=["target"]]
+shape = SubResource("CylinderShape3D_nhxqx")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="targets/test_target2"]
+stream = ExtResource("31_qss7p")
+volume_db = 1.0
+max_polyphony = 10
 
 [editable path="MovingPlatform2"]

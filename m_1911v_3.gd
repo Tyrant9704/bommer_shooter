@@ -98,11 +98,18 @@ func _process(delta):
 			if bullet_origin.get_collision_mask_value(5):
 				if bullet_origin.is_colliding():
 					next_shot = true
+					
+# call method hit for targets
+					if collider.has_method('hit'):
+						collider.hit()
+						
 					if collider is RigidBody3D:
 						collider.apply_central_impulse(self.global_transform.basis * effect)
 					if collider and 'enemy' in collider.get_groups():
+						prints('enemy hit')
 						collider._health(20)
 						pass
+					
 					else:
 						var b_hole = bullet_hole.instantiate()
 						collider.add_child(b_hole)

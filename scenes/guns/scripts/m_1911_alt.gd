@@ -99,6 +99,11 @@ func _fire():
 	next_shot = false
 	if have_ammo:
 		camera_shake.add_trauma(0.5, 5)
+		
+		if bullet_origin.is_colliding():
+			if collider.has_method('hit'):
+				collider.hit()
+		
 		if bullet_origin.get_collision_mask_value(5):
 			if bullet_origin.is_colliding():
 				next_shot = true
