@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bdspws4pwrxep"]
 
 [ext_resource type="Script" path="res://scripts/tic_tac_enemy.gd" id="1_hd071"]
-[ext_resource type="Texture2D" uid="uid://cqbv5g47l4i2k" path="res://assets/googly eyes.png" id="2_f8j80"]
-[ext_resource type="AudioStream" uid="uid://b6jfqqu60jrj8" path="res://assets/audio/monster-growl-140377.mp3" id="3_yiacb"]
+[ext_resource type="Texture2D" uid="uid://cqbv5g47l4i2k" path="res://model/assets/googly eyes.png" id="2_f8j80"]
+[ext_resource type="AudioStream" uid="uid://b6jfqqu60jrj8" path="res://model/assets/audio/monster-growl-140377.mp3" id="3_yiacb"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_ittlp"]
 
