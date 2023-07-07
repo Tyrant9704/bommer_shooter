@@ -76,6 +76,10 @@ func _fire():
 		var collider = r.get_collider()
 		if r.get_collision_mask_value(5):
 			if r.is_colliding():
+				
+				if collider.has_method('hit'):
+						collider.hit()
+				
 				next_shot = false
 				if collider is RigidBody3D:
 					collider.apply_central_impulse(self.global_transform.basis * effect)
