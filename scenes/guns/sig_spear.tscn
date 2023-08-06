@@ -488,5 +488,5 @@ stream = ExtResource("5_6nl43")
 max_polyphony = 5
 
 [node name="RayCast" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 target_position = Vector3(0, 0, -100)
+debug_shape_custom_color = Color(0, 0, 0, 0.521569)

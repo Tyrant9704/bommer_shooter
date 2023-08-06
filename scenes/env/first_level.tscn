@@ -1,6 +1,5 @@
-[gd_scene load_steps=91 format=3 uid="uid://c8iuvadkdynvi"]
+[gd_scene load_steps=70 format=3 uid="uid://c8iuvadkdynvi"]
 
-<<<<<<< HEAD
 [ext_resource type="Texture2D" uid="uid://cxchffji0l3d1" path="res://assets/textures/Concrete_Wall_007_basecolor.jpg" id="1_53qw6"]
 [ext_resource type="Texture2D" uid="uid://bs8s4gprehoqi" path="res://assets/textures/Concrete_Wall_007_ambientOcclusion.jpg" id="2_elnmt"]
 [ext_resource type="Texture2D" uid="uid://c4hr0matagwev" path="res://assets/textures/Concrete_Wall_007_normal.jpg" id="3_hae71"]
@@ -10,9 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://c6eud6q4p0ht7" path="res://assets/textures/Ground_Dirt_009_Height.png" id="7_8gnhf"]
 [ext_resource type="Texture2D" uid="uid://de2ruwf2bqodu" path="res://assets/textures/Ground_Dirt_009_Normal.jpg" id="8_kdcom"]
 [ext_resource type="Texture2D" uid="uid://clvi0nnhoobgg" path="res://assets/textures/Ground_Dirt_009_Roughness.jpg" id="9_j5oix"]
-[ext_resource type="Texture2D" uid="uid://c2dsmruut55i0" path="res://assets/Metal_Grill_004_basecolor.jpg" id="10_xoisl"]
-[ext_resource type="Texture2D" uid="uid://dcytsg4rotqo5" path="res://assets/Metal_Grill_004_metallic.jpg" id="11_ycdow"]
-[ext_resource type="Texture2D" uid="uid://c6ly5x0v4ylsg" path="res://assets/Metal_Grill_004_normal.jpg" id="12_f4xuc"]
 [ext_resource type="Texture2D" uid="uid://q6neqklvcovm" path="res://assets/Metal_Grill_004_roughness.jpg" id="13_yssfq"]
 [ext_resource type="Texture2D" uid="uid://cklbwxm604m4m" path="res://assets/Metal_Panels_009_metallic.jpg" id="14_q5d5r"]
 [ext_resource type="Texture2D" uid="uid://d3u2bwjn283b5" path="res://assets/Metal_Panels_009_roughness.jpg" id="15_cfgna"]
@@ -21,49 +17,22 @@
 [ext_resource type="Texture2D" uid="uid://bpi53wb11apfn" path="res://assets/Metal_Corrugated_011_basecolor.jpg" id="18_67icx"]
 [ext_resource type="Texture2D" uid="uid://dq2l3r2qbw5ot" path="res://assets/Metal_Corrugated_011_metallic.jpg" id="19_2y2gi"]
 [ext_resource type="Texture2D" uid="uid://cfglta4ppbr5k" path="res://assets/Metal_Corrugated_011_normal.jpg" id="20_ky2bb"]
-=======
-[ext_resource type="Texture2D" uid="uid://cxchffji0l3d1" path="res://model/assets/textures/Concrete_Wall_007_basecolor.jpg" id="1_53qw6"]
-[ext_resource type="Texture2D" uid="uid://bs8s4gprehoqi" path="res://model/assets/textures/Concrete_Wall_007_ambientOcclusion.jpg" id="2_elnmt"]
-[ext_resource type="Texture2D" uid="uid://c4hr0matagwev" path="res://model/assets/textures/Concrete_Wall_007_normal.jpg" id="3_hae71"]
-[ext_resource type="Texture2D" uid="uid://bu1r6h8xp825u" path="res://model/assets/textures/Concrete_Wall_007_roughness.jpg" id="4_6entm"]
-[ext_resource type="Texture2D" uid="uid://dm6vl55armm84" path="res://model/assets/textures/Ground_Dirt_009_BaseColor.jpg" id="5_tu6k6"]
-[ext_resource type="Texture2D" uid="uid://b2mtpiwuu34mu" path="res://model/assets/textures/Ground_Dirt_009_AmbientOcclusion.jpg" id="6_cug48"]
-[ext_resource type="Texture2D" uid="uid://c6eud6q4p0ht7" path="res://model/assets/textures/Ground_Dirt_009_Height.png" id="7_8gnhf"]
-[ext_resource type="Texture2D" uid="uid://de2ruwf2bqodu" path="res://model/assets/textures/Ground_Dirt_009_Normal.jpg" id="8_kdcom"]
-[ext_resource type="Texture2D" uid="uid://clvi0nnhoobgg" path="res://model/assets/textures/Ground_Dirt_009_Roughness.jpg" id="9_j5oix"]
-[ext_resource type="Texture2D" uid="uid://q6neqklvcovm" path="res://model/assets/Metal_Grill_004_roughness.jpg" id="13_yssfq"]
-[ext_resource type="Texture2D" uid="uid://cklbwxm604m4m" path="res://model/assets/Metal_Panels_009_metallic.jpg" id="14_q5d5r"]
-[ext_resource type="PackedScene" uid="uid://bgy5n44owubgi" path="res://scenes/constructions/slope.tscn" id="14_ye72q"]
-[ext_resource type="Texture2D" uid="uid://d3u2bwjn283b5" path="res://model/assets/Metal_Panels_009_roughness.jpg" id="15_cfgna"]
-[ext_resource type="Texture2D" uid="uid://rwe7rwjrg8en" path="res://model/assets/Metal_Panels_009_basecolor.jpg" id="16_7pkqy"]
-[ext_resource type="Texture2D" uid="uid://b3iniqkgnxq1p" path="res://model/assets/Metal_Panels_009_normal.jpg" id="17_gdwvb"]
-[ext_resource type="Texture2D" uid="uid://bpi53wb11apfn" path="res://model/assets/Metal_Corrugated_011_basecolor.jpg" id="18_67icx"]
-[ext_resource type="Texture2D" uid="uid://dq2l3r2qbw5ot" path="res://model/assets/Metal_Corrugated_011_metallic.jpg" id="19_2y2gi"]
-[ext_resource type="Texture2D" uid="uid://cfglta4ppbr5k" path="res://model/assets/Metal_Corrugated_011_normal.jpg" id="20_ky2bb"]
->>>>>>> 2539bd870aa97188221b8b3fb43defe8a317443b
 [ext_resource type="PackedScene" uid="uid://cpvx1qole72d0" path="res://scenes/env/ladder.tscn" id="21_65182"]
 [ext_resource type="PackedScene" uid="uid://dg6efjwoj8sq2" path="res://scenes/constructions/pipe.tscn" id="21_ew63d"]
 [ext_resource type="PackedScene" uid="uid://c58b4qmr02wc" path="res://scenes/env/moving_platform.tscn" id="22_nrq65"]
-<<<<<<< HEAD
 [ext_resource type="AudioStream" uid="uid://cakwa0t0tpqfj" path="res://assets/audio/wind1.wav" id="23_d4ffj"]
-[ext_resource type="AudioStream" uid="uid://d2ufd21buwrkr" path="res://assets/audio/Sci-fi freak out.wav" id="24_xes1m"]
-=======
-[ext_resource type="AudioStream" uid="uid://cakwa0t0tpqfj" path="res://model/assets/audio/wind1.wav" id="23_d4ffj"]
 [ext_resource type="PackedScene" uid="uid://d2s6jsq4m13ln" path="res://scenes/constructions/container.tscn" id="23_fk0jq"]
-[ext_resource type="AudioStream" uid="uid://d2ufd21buwrkr" path="res://model/assets/audio/Sci-fi freak out.wav" id="24_xes1m"]
->>>>>>> 2539bd870aa97188221b8b3fb43defe8a317443b
+[ext_resource type="AudioStream" uid="uid://d2ufd21buwrkr" path="res://assets/audio/Sci-fi freak out.wav" id="24_xes1m"]
 [ext_resource type="PackedScene" uid="uid://b086gn4fodijm" path="res://scenes/entities/player_bit_fixed.tscn" id="25_5xfrb"]
 [ext_resource type="PackedScene" uid="uid://cw1ftw2yf13w1" path="res://scenes/entities/dummy.tscn" id="26_6sxmg"]
 [ext_resource type="PackedScene" uid="uid://bdspws4pwrxep" path="res://scenes/entities/tic_tac_enemy.tscn" id="27_ee11t"]
 [ext_resource type="PackedScene" uid="uid://2fhbj2ugvpuo" path="res://scenes/misc_objects/oli_barrel.tscn" id="27_go81x"]
 [ext_resource type="PackedScene" uid="uid://brkitvo6d22fj" path="res://UI/main_menu.tscn" id="28_aq16a"]
 [ext_resource type="PackedScene" uid="uid://bgkyyxecewegx" path="res://scenes/pickups/ammo_pickup_01.tscn" id="29_plo03"]
-[ext_resource type="Script" path="res://scenes/entities/test_target.gd" id="30_7e0jr"]
 [ext_resource type="PackedScene" uid="uid://cmut850t07k18" path="res://scenes/entities/test_target.tscn" id="30_mkwdp"]
-[ext_resource type="Texture2D" uid="uid://c2dsmruut55i0" path="res://model/assets/Metal_Grill_004_basecolor.jpg" id="30_wjck8"]
-[ext_resource type="Texture2D" uid="uid://dcytsg4rotqo5" path="res://model/assets/Metal_Grill_004_metallic.jpg" id="31_d0gcw"]
-[ext_resource type="AudioStream" uid="uid://rliw7xngnwig" path="res://assets/audio/beep_01.ogg" id="31_qss7p"]
-[ext_resource type="Texture2D" uid="uid://c6ly5x0v4ylsg" path="res://model/assets/Metal_Grill_004_normal.jpg" id="32_j0vuk"]
+[ext_resource type="Texture2D" uid="uid://c2dsmruut55i0" path="res://assets/Metal_Grill_004_basecolor.jpg" id="30_wjck8"]
+[ext_resource type="Texture2D" uid="uid://dcytsg4rotqo5" path="res://assets/Metal_Grill_004_metallic.jpg" id="31_d0gcw"]
+[ext_resource type="Texture2D" uid="uid://c6ly5x0v4ylsg" path="res://assets/Metal_Grill_004_normal.jpg" id="32_j0vuk"]
 [ext_resource type="PackedScene" uid="uid://dowm5suwei2pc" path="res://scenes/constructions/square_floor.tscn" id="33_24ttf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pua18"]
@@ -249,244 +218,6 @@ albedo_color = Color(0.277528, 0.277528, 0.277528, 1)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_53jy3"]
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3bpq"]
-albedo_color = Color(1, 0, 0, 1)
-albedo_texture = ExtResource("30_wjck8")
-metallic = 1.0
-metallic_texture = ExtResource("31_d0gcw")
-roughness = 0.1
-normal_enabled = true
-normal_texture = ExtResource("32_j0vuk")
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_o6p4o"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_nhxqx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_el858"]
-albedo_color = Color(1, 0, 0, 1)
-albedo_texture = ExtResource("30_wjck8")
-metallic = 1.0
-metallic_texture = ExtResource("31_d0gcw")
-roughness = 0.1
-normal_enabled = true
-normal_texture = ExtResource("32_j0vuk")
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_vfgi7"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_5a2kj"]
-
-[sub_resource type="GDScript" id="GDScript_33opd"]
-script/source = "extends Node3D
-
-@onready var audio = $\"../../AudioStreamPlayer3D\"
-@onready var mesh = $\"..\"
-
-var color := Color(2, 0, 0, 1)
-var hitColor := Color(5, 5, 1, 1)
-var timer := 0.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	timer += delta
-	if timer > 0.2:
-		timer = 0.0
-		mesh.material_override.albedo_color = color
-		
-
-func hit():
-	prints('target hit !')
-	audio.pitch_scale = randf_range(1, 1.2)
-	mesh.material_override.albedo_color = hitColor
-	audio.play()
-	#add albedo change on hit
-"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylsyq"]
-albedo_color = Color(1, 0, 0, 1)
-albedo_texture = ExtResource("30_wjck8")
-metallic = 1.0
-metallic_texture = ExtResource("31_d0gcw")
-roughness = 0.1
-normal_enabled = true
-normal_texture = ExtResource("32_j0vuk")
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_6hci7"]
-
-[sub_resource type="GDScript" id="GDScript_6j8th"]
-script/source = "extends Node3D
-
-@onready var audio = $\"../../AudioStreamPlayer3D\"
-@onready var mesh = $\"..\"
-
-var color := Color(2, 0, 0, 1)
-var hitColor := Color(5, 5, 1, 1)
-var timer := 0.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	timer += delta
-	if timer > 0.2:
-		timer = 0.0
-		mesh.material_override.albedo_color = color
-		
-
-func hit():
-	prints('target hit !')
-	audio.pitch_scale = randf_range(1, 1.2)
-	mesh.material_override.albedo_color = hitColor
-	audio.play()
-	#add albedo change on hit
-"
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_wlt68"]
-
-[sub_resource type="GDScript" id="GDScript_3de3x"]
-script/source = "extends Node3D
-
-@onready var audio = $\"../../AudioStreamPlayer3D\"
-@onready var mesh = $\"..\"
-
-var color := Color(2, 0, 0, 1)
-var hitColor := Color(5, 5, 1, 1)
-var timer := 0.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	timer += delta
-	if timer > 0.2:
-		timer = 0.0
-		mesh.material_override.albedo_color = color
-		
-
-func hit():
-	prints('target hit !')
-	audio.pitch_scale = randf_range(1, 1.2)
-	mesh.material_override.albedo_color = hitColor
-	audio.play()
-	#add albedo change on hit
-"
-
-[sub_resource type="GDScript" id="GDScript_gkwr5"]
-script/source = "extends Node3D
-
-@onready var audio = $\"../../AudioStreamPlayer3D\"
-@onready var mesh = $\"..\"
-
-var color := Color(2, 0, 0, 1)
-var hitColor := Color(5, 5, 1, 1)
-var timer := 0.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	timer += delta
-	if timer > 0.2:
-		timer = 0.0
-		mesh.material_override.albedo_color = color
-		
-
-func hit():
-	prints('target hit !')
-	audio.pitch_scale = randf_range(1, 1.2)
-	mesh.material_override.albedo_color = hitColor
-	audio.play()
-	#add albedo change on hit
-"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1cwjf"]
-albedo_color = Color(1, 0, 0, 1)
-albedo_texture = ExtResource("30_wjck8")
-metallic = 1.0
-metallic_texture = ExtResource("31_d0gcw")
-roughness = 0.1
-normal_enabled = true
-normal_texture = ExtResource("32_j0vuk")
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_fxr2g"]
-
-[sub_resource type="GDScript" id="GDScript_3v130"]
-script/source = "extends Node3D
-
-@onready var audio = $\"../../AudioStreamPlayer3D\"
-@onready var mesh = $\"..\"
-
-var color := Color(2, 0, 0, 1)
-var hitColor := Color(5, 5, 1, 1)
-var timer := 0.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	timer += delta
-	if timer > 0.2:
-		timer = 0.0
-		mesh.material_override.albedo_color = color
-		
-
-func hit():
-	prints('target hit !')
-	audio.pitch_scale = randf_range(1, 1.2)
-	mesh.material_override.albedo_color = hitColor
-	audio.play()
-	#add albedo change on hit
-"
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_f5dky"]
-
-[sub_resource type="GDScript" id="GDScript_rkqnk"]
-script/source = "extends Node3D
-
-@onready var audio = $\"../../AudioStreamPlayer3D\"
-@onready var mesh = $\"..\"
-
-var color := Color(2, 0, 0, 1)
-var hitColor := Color(5, 5, 1, 1)
-var timer := 0.0
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	timer += delta
-	if timer > 0.2:
-		timer = 0.0
-		mesh.material_override.albedo_color = color
-		
-
-func hit():
-	prints('target hit !')
-	audio.pitch_scale = randf_range(1, 1.2)
-	mesh.material_override.albedo_color = hitColor
-	audio.play()
-	#add albedo change on hit
-"
 
 [node name="Node3D" type="Node3D"]
 
@@ -1097,218 +828,6 @@ quantity = 50
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.85759, 0.240641, 8.31779)
 quantity = 50
 
-[node name="targets" type="Node" parent="."]
-
-[node name="test_target4" parent="targets" instance=ExtResource("30_mkwdp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.1711, 1.11221, 11.93)
-
-[node name="test_target5" parent="targets" instance=ExtResource("30_mkwdp")]
-process_mode = 3
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9212, 2.52658, 11.93)
-
-[node name="test_target6" parent="targets" instance=ExtResource("30_mkwdp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.47059, 3.69655, 11.93)
-
-[node name="test_target" parent="targets" instance=ExtResource("30_mkwdp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2873, 2.54496, 13.3171)
-
-[node name="test_target2" type="Node3D" parent="targets" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67603, 1.55613, 12.7714)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="targets/test_target2" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, -1.17012e-09, -1, 0, 0.0267693, -4.37114e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_q3bpq")
-mesh = SubResource("CylinderMesh_o6p4o")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="targets/test_target2/MeshInstance3D" groups=["target"]]
-script = ExtResource("30_7e0jr")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="targets/test_target2/MeshInstance3D/StaticBody3D" groups=["target"]]
-shape = SubResource("CylinderShape3D_nhxqx")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="targets/test_target2"]
-stream = ExtResource("31_qss7p")
-volume_db = 1.0
-max_polyphony = 10
-
-[node name="test_target7" type="Node3D" parent="targets" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.48146, 1.26439, 12.6348)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="targets/test_target7" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, -1.17012e-09, -1, 0, 0.0267693, -4.37114e-08, 0, 0, 0.0368004)
-material_override = SubResource("StandardMaterial3D_el858")
-mesh = SubResource("CylinderMesh_vfgi7")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="targets/test_target7/MeshInstance3D" groups=["target"]]
-script = ExtResource("30_7e0jr")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="targets/test_target7/MeshInstance3D/StaticBody3D" groups=["target"]]
-shape = SubResource("CylinderShape3D_5a2kj")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="targets/test_target7"]
-stream = ExtResource("31_qss7p")
-volume_db = 1.0
-max_polyphony = 10
-
-[node name="test_target8" type="Node3D" parent="targets" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.84693, 0.734996, 11.9683)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="targets/test_target8" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, -1.17012e-09, -1, 0, 0.0267693, -4.37114e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_el858")
-mesh = SubResource("CylinderMesh_vfgi7")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="targets/test_target8/MeshInstance3D" groups=["target"]]
-script = ExtResource("30_7e0jr")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="targets/test_target8/MeshInstance3D/StaticBody3D" groups=["target"]]
-shape = SubResource("CylinderShape3D_5a2kj")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="targets/test_target8"]
-stream = ExtResource("31_qss7p")
-volume_db = 1.0
-max_polyphony = 10
-
-[node name="taaarget" type="Node3D" parent="targets" groups=["target"]]
-transform = Transform3D(2.52657, 0, 0, 0, 2.52657, 0, 0, 0, 1, -7.48287, 2.2951, 12.812)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="targets/taaarget" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, -1.17012e-09, -1, 0, 0.0267693, -4.37114e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_el858")
-mesh = SubResource("CylinderMesh_vfgi7")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="targets/taaarget/MeshInstance3D" groups=["target"]]
-process_mode = 1
-script = SubResource("GDScript_33opd")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="targets/taaarget/MeshInstance3D/StaticBody3D" groups=["target"]]
-shape = SubResource("CylinderShape3D_5a2kj")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="targets/taaarget"]
-stream = ExtResource("31_qss7p")
-volume_db = 1.0
-max_polyphony = 10
-
-[node name="test_target3" parent="targets" instance=ExtResource("30_mkwdp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96698, 2.54496, 13.3171)
-
-[node name="tarja_turunen" type="Node3D" parent="targets" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.39543, 12.7198)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="targets/tarja_turunen" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, -1.17012e-09, -1, 0, 0.0267693, -4.37114e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_ylsyq")
-mesh = SubResource("CylinderMesh_6hci7")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="targets/tarja_turunen/MeshInstance3D" groups=["target"]]
-process_mode = 1
-script = SubResource("GDScript_6j8th")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="targets/tarja_turunen/MeshInstance3D/StaticBody3D" groups=["target"]]
-shape = SubResource("CylinderShape3D_wlt68")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="targets/tarja_turunen"]
-stream = ExtResource("31_qss7p")
-volume_db = 1.0
-max_polyphony = 10
-
-[node name="tarja_turunen2" type="Node3D" parent="targets" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.74801, 12.7198)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="targets/tarja_turunen2" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, -1.17012e-09, -1, 0, 0.0267693, -4.37114e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_ylsyq")
-mesh = SubResource("CylinderMesh_6hci7")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="targets/tarja_turunen2/MeshInstance3D" groups=["target"]]
-process_mode = 1
-script = SubResource("GDScript_6j8th")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="targets/tarja_turunen2/MeshInstance3D/StaticBody3D" groups=["target"]]
-shape = SubResource("CylinderShape3D_wlt68")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="targets/tarja_turunen2"]
-stream = ExtResource("31_qss7p")
-volume_db = 1.0
-max_polyphony = 10
-
-[node name="targetto" type="Node3D" parent="targets" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04164, 12.5365)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="targets/targetto" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, -1.17012e-09, -1, 0, 0.0267693, -4.37114e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_ylsyq")
-mesh = SubResource("CylinderMesh_6hci7")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="targets/targetto/MeshInstance3D" groups=["target"]]
-process_mode = 1
-script = SubResource("GDScript_3de3x")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="targets/targetto/MeshInstance3D/StaticBody3D" groups=["target"]]
-shape = SubResource("CylinderShape3D_wlt68")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="targets/targetto"]
-stream = ExtResource("31_qss7p")
-volume_db = 1.0
-max_polyphony = 10
-
-[node name="tarpan" type="Node3D" parent="targets" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.98531, 0.78346, 12.5089)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="targets/tarpan" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, -1.17012e-09, -1, 0, 0.0267693, -4.37114e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_ylsyq")
-mesh = SubResource("CylinderMesh_6hci7")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="targets/tarpan/MeshInstance3D" groups=["target"]]
-script = SubResource("GDScript_gkwr5")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="targets/tarpan/MeshInstance3D/StaticBody3D" groups=["target"]]
-shape = SubResource("CylinderShape3D_wlt68")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="targets/tarpan"]
-stream = ExtResource("31_qss7p")
-volume_db = 1.0
-max_polyphony = 10
-
-[node name="tarczynski" type="Node3D" parent="targets" groups=["target"]]
-transform = Transform3D(1.67331, 0, 0, 0, 1.67331, 0, 0, 0, 1, -11.0256, 1.42123, 12.1615)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="targets/tarczynski" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, -1.17012e-09, -1, 0, 0.0267693, -4.37114e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_1cwjf")
-mesh = SubResource("CylinderMesh_fxr2g")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="targets/tarczynski/MeshInstance3D" groups=["target"]]
-script = SubResource("GDScript_3v130")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="targets/tarczynski/MeshInstance3D/StaticBody3D" groups=["target"]]
-shape = SubResource("CylinderShape3D_f5dky")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="targets/tarczynski"]
-stream = ExtResource("31_qss7p")
-volume_db = 1.0
-max_polyphony = 10
-
-[node name="tarnica" type="Node3D" parent="targets" groups=["target"]]
-transform = Transform3D(1.53507, 0, 0, 0, 1.53507, 0, 0, 0, 1, -13.0096, 0.951092, 12.099)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="targets/tarnica" groups=["target"]]
-transform = Transform3D(1, 0, 0, 0, -1.17012e-09, -1, 0, 0.0267693, -4.37114e-08, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_1cwjf")
-mesh = SubResource("CylinderMesh_fxr2g")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="targets/tarnica/MeshInstance3D" groups=["target"]]
-script = SubResource("GDScript_rkqnk")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="targets/tarnica/MeshInstance3D/StaticBody3D" groups=["target"]]
-shape = SubResource("CylinderShape3D_f5dky")
-
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="targets/tarnica"]
-stream = ExtResource("31_qss7p")
-volume_db = 1.0
-max_polyphony = 10
-
 [node name="square6" parent="." instance=ExtResource("33_24ttf")]
 transform = Transform3D(50, 0, 0, 0, 1, 0, 0, 0, 50, -38.4977, -0.415907, -55.9652)
 
@@ -1341,16 +860,48 @@ skeleton = NodePath("../..")
 transform = Transform3D(0.0996626, 0, 0.0164155, 0, 5, 0, -0.00820776, 0, 0.199325, 0.0974394, 7.95047, -0.126296)
 skeleton = NodePath("../..")
 
-[node name="slope" parent="." instance=ExtResource("14_ye72q")]
-transform = Transform3D(-6.09712e-07, 1.1265e-08, -10.1264, 8.05322, 0.446372, 0, 13.9486, -0.257713, -4.42639e-07, 34.4924, 3.83466, -34.4065)
+[node name="shooting_range" type="Node" parent="."]
 
-[node name="slope4" parent="." instance=ExtResource("14_ye72q")]
-transform = Transform3D(13.9486, -0.257713, 0, 8.05322, 0.446372, 0, 0, 0, 10.1264, 22.4135, 3.8159, 3.57364)
+[node name="test_target" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16788, 1.38912, 16.4929)
 
-[node name="slope2" parent="." instance=ExtResource("14_ye72q")]
-transform = Transform3D(-13.9486, 0.257713, 8.85278e-07, 8.05323, 0.446372, 0, -1.21943e-06, 2.253e-08, -10.1264, -6.67561, 3.88005, -39.4065)
+[node name="test_target2" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0280384, 1.38912, 16.4929)
 
-[node name="slope3" parent="." instance=ExtResource("14_ye72q")]
-transform = Transform3D(-13.9486, 0.257713, 8.85278e-07, 8.05323, 0.446372, 0, -1.21943e-06, 2.253e-08, -10.1264, -6.67561, 3.88005, -73.4737)
+[node name="test_target3" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11985, 1.38912, 16.4929)
+
+[node name="test_target4" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36492, 1.38912, 16.4929)
+
+[node name="test_target5" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.36492, 2.47081, 16.4929)
+
+[node name="test_target11" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45189, 2.47081, 16.4929)
+
+[node name="test_target12" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.45189, 1.3974, 16.4929)
+
+[node name="test_target13" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15023, 3.59916, 16.4929)
+
+[node name="test_target14" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0365862, 3.59916, 16.4929)
+
+[node name="test_target6" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.10901, 2.47081, 16.4929)
+
+[node name="test_target7" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0127375, 2.47081, 16.4929)
+
+[node name="test_target8" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05824, 2.47081, 16.4929)
+
+[node name="test_target9" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16102, 2.47081, 16.4929)
+
+[node name="test_target10" parent="shooting_range" instance=ExtResource("30_mkwdp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25189, 1.37302, 16.4929)
 
 [editable path="MovingPlatform2"]
