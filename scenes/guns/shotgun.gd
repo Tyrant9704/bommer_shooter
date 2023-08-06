@@ -78,6 +78,7 @@ func _fire():
 	#bullet_hole_spawn()
 	for r in raycast_container.get_children():
 		var collider = r.get_collider()
+<<<<<<< HEAD
 		if r.is_colliding():
 			next_shot = false
 			if collider is RigidBody3D:
@@ -92,6 +93,19 @@ func _fire():
 					b.look_at(r.get_collision_point() + r.get_collision_normal(), Vector3.RIGHT)
 				elif r.get_collision_normal() == Vector3(0,-1,0):
 					b.look_at(r.get_collision_point() + r.get_collision_normal(), Vector3.RIGHT)
+=======
+		if r.get_collision_mask_value(5):
+			if r.is_colliding():
+				
+				if collider.has_method('hit'):
+						collider.hit()
+				
+				next_shot = false
+				if collider is RigidBody3D:
+					collider.apply_central_impulse(self.global_transform.basis * effect)
+				if collider and 'enemy' in collider.get_groups():
+					collider._health(20)
+>>>>>>> 2539bd870aa97188221b8b3fb43defe8a317443b
 				else:
 					b.look_at(r.get_collision_point() + r.get_collision_normal())
 

@@ -104,6 +104,7 @@ func _fire():
 	var collider = bullet_origin.get_collider()
 	if have_ammo:
 		camera_shake.add_trauma(0.5, 5)
+<<<<<<< HEAD
 		if bullet_origin.is_colliding():
 			if collider is RigidBody3D:
 				collider.apply_central_impulse(self.global_transform.basis * effect)
@@ -117,6 +118,20 @@ func _fire():
 					b.look_at(bullet_origin.get_collision_point() + bullet_origin.get_collision_normal(), Vector3.RIGHT)
 				elif bullet_origin.get_collision_normal() == Vector3(0,-1,0):
 					b.look_at(bullet_origin.get_collision_point() + bullet_origin.get_collision_normal(), Vector3.RIGHT)
+=======
+		
+		if bullet_origin.is_colliding():
+			if collider.has_method('hit'):
+				collider.hit()
+		
+		if bullet_origin.get_collision_mask_value(5):
+			if bullet_origin.is_colliding():
+				next_shot = true
+				if collider is RigidBody3D:
+					collider.apply_central_impulse(self.global_transform.basis * effect)
+				if collider and 'enemy' in collider.get_groups():
+					collider._health(20)
+>>>>>>> 2539bd870aa97188221b8b3fb43defe8a317443b
 				else:
 					b.look_at(bullet_origin.get_collision_point() + bullet_origin.get_collision_normal())
 

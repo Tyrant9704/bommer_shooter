@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://dg6efjwoj8sq2"]
+
+[ext_resource type="Texture2D" uid="uid://rwe7rwjrg8en" path="res://assets/Metal_Panels_009_basecolor.jpg" id="1_ci8t1"]
+[ext_resource type="Texture2D" uid="uid://cklbwxm604m4m" path="res://assets/Metal_Panels_009_metallic.jpg" id="2_xm88d"]
+[ext_resource type="Texture2D" uid="uid://d3u2bwjn283b5" path="res://assets/Metal_Panels_009_roughness.jpg" id="3_mli8i"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d7tik"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xdee"]
+albedo_color = Color(0.686275, 0.482353, 0.435294, 1)
+albedo_texture = ExtResource("1_ci8t1")
+metallic = 1.0
+metallic_specular = 0.57
+metallic_texture = ExtResource("2_xm88d")
+roughness = 0.7
+roughness_texture = ExtResource("3_mli8i")
+uv1_scale = Vector3(2, 10, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qgcci"]
+size = Vector3(1, 2.00641, 1)
+
+[node name="pipe" type="MeshInstance3D"]
+transform = Transform3D(0.00129157, -0.106498, 0.999842, -0.999999, -0.000137525, 0.00129137, 8.09491e-12, -6.00519, -0.0177318, 21.4915, -0.589609, -29.1009)
+mesh = SubResource("CylinderMesh_d7tik")
+surface_material_override/0 = SubResource("StandardMaterial3D_2xdee")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, -4.75922e-11, 8.88886e-10, 1.62941e-13, 1, -2.95695e-08, -1.27956e-13, 8.9407e-08, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_qgcci")
