@@ -69,7 +69,7 @@ var desired_weapon : String
 # temporary hardcoded!
 # nie powinnismy hardcodowac broni, beda zapewne do wyboru w jakims menu (przed startem gry w lobby / whatever)
 # beda pushowane do tej tablicy dynamicznie z UI lobby (guns menu or whtev)
-var weapons = ['M1911_normal', 'm1911_alt', 'weapon_3', 'shotgun']
+var weapons = ['M1911_normal', 'm1911_alt', 'spear', 'shotgun']
 
 
 
@@ -171,7 +171,7 @@ func _input(event):
 				elif current_grenade == grenadesArr[1]:
 					grenade_clone = grenade_scene_02.instantiate()
 				
-				grenade_clone.global_transform = grenade_point.global_transform
+					grenade_clone.global_transform = grenade_point.global_transform
 				get_tree().root.add_child(grenade_clone)
 				grenade_clone.apply_central_impulse(-grenade_clone.global_transform.basis.z * (speed / 10) * GRENADE_THROW_FORCE)
 				

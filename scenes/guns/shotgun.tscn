@@ -215,8 +215,8 @@ _data = {
 
 [node name="shotgun" type="Node3D"]
 script = ExtResource("1_ab3vj")
-pos_normal = Vector3(0.507, 0.06, 0.227)
-pos_aim = Vector3(-0.025, 0.06, 0.227)
+pos_normal = Vector3(0.515, -0.005, 0.052)
+pos_aim = Vector3(-0.069, 0.06, 0.227)
 rot_aim = Vector3(0.833, 0, 0)
 
 [node name="body" type="Node3D" parent="."]
@@ -293,6 +293,7 @@ debug_shape_custom_color = Color(0.168627, 0.564706, 0, 1)
 
 [node name="RayCast3D7" type="RayCast3D" parent="raycast_container"]
 target_position = Vector3(0, 0, -100)
+collision_mask = 25
 debug_shape_custom_color = Color(0.168627, 0.564706, 0, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

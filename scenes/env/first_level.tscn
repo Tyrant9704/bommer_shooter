@@ -1,5 +1,27 @@
 [gd_scene load_steps=91 format=3 uid="uid://c8iuvadkdynvi"]
 
+<<<<<<< HEAD
+[ext_resource type="Texture2D" uid="uid://cxchffji0l3d1" path="res://assets/textures/Concrete_Wall_007_basecolor.jpg" id="1_53qw6"]
+[ext_resource type="Texture2D" uid="uid://bs8s4gprehoqi" path="res://assets/textures/Concrete_Wall_007_ambientOcclusion.jpg" id="2_elnmt"]
+[ext_resource type="Texture2D" uid="uid://c4hr0matagwev" path="res://assets/textures/Concrete_Wall_007_normal.jpg" id="3_hae71"]
+[ext_resource type="Texture2D" uid="uid://bu1r6h8xp825u" path="res://assets/textures/Concrete_Wall_007_roughness.jpg" id="4_6entm"]
+[ext_resource type="Texture2D" uid="uid://dm6vl55armm84" path="res://assets/textures/Ground_Dirt_009_BaseColor.jpg" id="5_tu6k6"]
+[ext_resource type="Texture2D" uid="uid://b2mtpiwuu34mu" path="res://assets/textures/Ground_Dirt_009_AmbientOcclusion.jpg" id="6_cug48"]
+[ext_resource type="Texture2D" uid="uid://c6eud6q4p0ht7" path="res://assets/textures/Ground_Dirt_009_Height.png" id="7_8gnhf"]
+[ext_resource type="Texture2D" uid="uid://de2ruwf2bqodu" path="res://assets/textures/Ground_Dirt_009_Normal.jpg" id="8_kdcom"]
+[ext_resource type="Texture2D" uid="uid://clvi0nnhoobgg" path="res://assets/textures/Ground_Dirt_009_Roughness.jpg" id="9_j5oix"]
+[ext_resource type="Texture2D" uid="uid://c2dsmruut55i0" path="res://assets/Metal_Grill_004_basecolor.jpg" id="10_xoisl"]
+[ext_resource type="Texture2D" uid="uid://dcytsg4rotqo5" path="res://assets/Metal_Grill_004_metallic.jpg" id="11_ycdow"]
+[ext_resource type="Texture2D" uid="uid://c6ly5x0v4ylsg" path="res://assets/Metal_Grill_004_normal.jpg" id="12_f4xuc"]
+[ext_resource type="Texture2D" uid="uid://q6neqklvcovm" path="res://assets/Metal_Grill_004_roughness.jpg" id="13_yssfq"]
+[ext_resource type="Texture2D" uid="uid://cklbwxm604m4m" path="res://assets/Metal_Panels_009_metallic.jpg" id="14_q5d5r"]
+[ext_resource type="Texture2D" uid="uid://d3u2bwjn283b5" path="res://assets/Metal_Panels_009_roughness.jpg" id="15_cfgna"]
+[ext_resource type="Texture2D" uid="uid://rwe7rwjrg8en" path="res://assets/Metal_Panels_009_basecolor.jpg" id="16_7pkqy"]
+[ext_resource type="Texture2D" uid="uid://b3iniqkgnxq1p" path="res://assets/Metal_Panels_009_normal.jpg" id="17_gdwvb"]
+[ext_resource type="Texture2D" uid="uid://bpi53wb11apfn" path="res://assets/Metal_Corrugated_011_basecolor.jpg" id="18_67icx"]
+[ext_resource type="Texture2D" uid="uid://dq2l3r2qbw5ot" path="res://assets/Metal_Corrugated_011_metallic.jpg" id="19_2y2gi"]
+[ext_resource type="Texture2D" uid="uid://cfglta4ppbr5k" path="res://assets/Metal_Corrugated_011_normal.jpg" id="20_ky2bb"]
+=======
 [ext_resource type="Texture2D" uid="uid://cxchffji0l3d1" path="res://model/assets/textures/Concrete_Wall_007_basecolor.jpg" id="1_53qw6"]
 [ext_resource type="Texture2D" uid="uid://bs8s4gprehoqi" path="res://model/assets/textures/Concrete_Wall_007_ambientOcclusion.jpg" id="2_elnmt"]
 [ext_resource type="Texture2D" uid="uid://c4hr0matagwev" path="res://model/assets/textures/Concrete_Wall_007_normal.jpg" id="3_hae71"]
@@ -18,12 +40,18 @@
 [ext_resource type="Texture2D" uid="uid://bpi53wb11apfn" path="res://model/assets/Metal_Corrugated_011_basecolor.jpg" id="18_67icx"]
 [ext_resource type="Texture2D" uid="uid://dq2l3r2qbw5ot" path="res://model/assets/Metal_Corrugated_011_metallic.jpg" id="19_2y2gi"]
 [ext_resource type="Texture2D" uid="uid://cfglta4ppbr5k" path="res://model/assets/Metal_Corrugated_011_normal.jpg" id="20_ky2bb"]
+>>>>>>> 2539bd870aa97188221b8b3fb43defe8a317443b
 [ext_resource type="PackedScene" uid="uid://cpvx1qole72d0" path="res://scenes/env/ladder.tscn" id="21_65182"]
 [ext_resource type="PackedScene" uid="uid://dg6efjwoj8sq2" path="res://scenes/constructions/pipe.tscn" id="21_ew63d"]
 [ext_resource type="PackedScene" uid="uid://c58b4qmr02wc" path="res://scenes/env/moving_platform.tscn" id="22_nrq65"]
+<<<<<<< HEAD
+[ext_resource type="AudioStream" uid="uid://cakwa0t0tpqfj" path="res://assets/audio/wind1.wav" id="23_d4ffj"]
+[ext_resource type="AudioStream" uid="uid://d2ufd21buwrkr" path="res://assets/audio/Sci-fi freak out.wav" id="24_xes1m"]
+=======
 [ext_resource type="AudioStream" uid="uid://cakwa0t0tpqfj" path="res://model/assets/audio/wind1.wav" id="23_d4ffj"]
 [ext_resource type="PackedScene" uid="uid://d2s6jsq4m13ln" path="res://scenes/constructions/container.tscn" id="23_fk0jq"]
 [ext_resource type="AudioStream" uid="uid://d2ufd21buwrkr" path="res://model/assets/audio/Sci-fi freak out.wav" id="24_xes1m"]
+>>>>>>> 2539bd870aa97188221b8b3fb43defe8a317443b
 [ext_resource type="PackedScene" uid="uid://b086gn4fodijm" path="res://scenes/entities/player_bit_fixed.tscn" id="25_5xfrb"]
 [ext_resource type="PackedScene" uid="uid://cw1ftw2yf13w1" path="res://scenes/entities/dummy.tscn" id="26_6sxmg"]
 [ext_resource type="PackedScene" uid="uid://bdspws4pwrxep" path="res://scenes/entities/tic_tac_enemy.tscn" id="27_ee11t"]
@@ -1042,6 +1070,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07278, 2.18607, -6.7139)
 
 [node name="tic_tac_enemy2" parent="." instance=ExtResource("27_ee11t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.18506, 3.28872, -5.73368)
+
+[node name="tic_tac_enemy3" parent="." instance=ExtResource("27_ee11t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.02554, 3.28872, -5.73368)
 
 [node name="Player" parent="." instance=ExtResource("25_5xfrb")]
 

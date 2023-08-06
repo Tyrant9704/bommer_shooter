@@ -1,20 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://pl6g21nsybd1"]
+[gd_scene load_steps=7 format=3 uid="uid://pl6g21nsybd1"]
 
 [ext_resource type="Texture2D" uid="uid://ucfbw42ra4lj" path="res://assets/textures/bullet_hole.png" id="1_6nbhg"]
 [ext_resource type="Script" path="res://scripts/bullet_hole.gd" id="1_8u77t"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_m100e"]
+flip_faces = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6bha0"]
 transparency = 1
 albedo_texture = ExtResource("1_6nbhg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iorau"]
+cull_mode = 2
+albedo_color = Color(0.32549, 0.32549, 0.32549, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_cnxqa"]
+material = SubResource("StandardMaterial3D_iorau")
+size = Vector2(0.1, 0.1)
 
 [node name="bullet_hole" type="Node3D"]
 transform = Transform3D(0.044, 0, 0, 0, 0.044, 0, 0, 0, 0.044, 0, 0, 0)
 script = ExtResource("1_8u77t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, 8.9407e-08, 0, 1, 0, -8.9407e-08, 0, -1, 8.9407e-09, 0, -0.1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
 mesh = SubResource("QuadMesh_m100e")
 surface_material_override/0 = SubResource("StandardMaterial3D_6bha0")
 
@@ -23,4 +32,27 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
+[node name="dust" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+emitting = false
+amount = 300
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+randomness = 0.31
+lifetime_randomness = 0.73
+mesh = SubResource("QuadMesh_cnxqa")
+emission_shape = 1
+emission_sphere_radius = 2.1
+particle_flag_rotate_y = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 2.81
+initial_velocity_max = 11.14
+split_scale = true
+scale_curve_x = null
+scale_curve_y = null
+scale_curve_z = null
+
+[connection signal="ready" from="MeshInstance3D" to="." method="_on_mesh_instance_3d_ready"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
