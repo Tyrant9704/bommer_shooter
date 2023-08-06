@@ -1,6 +1,6 @@
 extends RigidBody3D
 
-
+var entered = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -13,3 +13,9 @@ func _process(delta):
 
 func _on_timer_timeout():
 	queue_free()
+
+
+func _on_body_entered(body):
+	if entered:
+		$AudioStreamPlayer.play(1.61)
+		entered = false

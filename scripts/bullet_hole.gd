@@ -5,7 +5,6 @@ extends Node3D
 func _ready():
 	pass
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
 
@@ -13,8 +12,7 @@ func _process(delta):
 func _on_timer_timeout():
 	queue_free()
 
-
-func _on_tree_entered():
-
-	$dust.restart
+func _on_mesh_instance_3d_ready():
+	await get_tree().create_timer(0.1).timeout
 	$dust.emitting = true
+	
