@@ -56,6 +56,8 @@ func _fire():
 				collider.apply_central_impulse(self.global_transform.basis * effect)
 			if collider and 'enemy' in collider.get_groups():
 				collider._health(20)
+			if collider and 'target' in collider.get_groups():
+				collider._target_hit()
 			else:
 				var b = bullet_hole.instantiate()
 				collider.add_child(b)
