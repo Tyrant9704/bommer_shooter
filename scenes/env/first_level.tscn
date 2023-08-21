@@ -39,12 +39,12 @@
 ground_bottom_color = Color(0.0823529, 0.0666667, 0.0470588, 1)
 sun_angle_max = 105.43
 
-[sub_resource type="Sky" id="Sky_qah1l"]
+[sub_resource type="Sky" id="Sky_qa8yk"]
 sky_material = SubResource("ProceduralSkyMaterial_pua18")
 
 [sub_resource type="Environment" id="Environment_ifd3w"]
 background_mode = 2
-sky = SubResource("Sky_qah1l")
+sky = SubResource("Sky_qa8yk")
 tonemap_mode = 2
 
 [sub_resource type="BoxMesh" id="BoxMesh_rfi1u"]
@@ -479,7 +479,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.61868, 3.67369, 0)
 transform = Transform3D(2.13465, 0, 0, 0, 1, 0, 0, 0, 1.79927, 2.95499, 4.94509, -2.26696)
 
 [node name="AnimatableBody3D" parent="MovingPlatform2" index="0"]
-transform = Transform3D(-0.680669, -0.0567382, 0.730392, -1.86265e-09, 0.996996, 0.0774487, -0.732591, 0.0527168, -0.678625, 0.0145965, 3.11362, 0.000934362)
+transform = Transform3D(0.680669, -0.0567382, -0.730392, 5.58793e-09, 0.996996, -0.0774487, 0.732591, 0.0527168, 0.678625, 0.0145965, 3.11362, 0.000934362)
 
 [node name="MeshInstance3D" parent="MovingPlatform2/AnimatableBody3D/CollisionShape3D" index="0"]
 transform = Transform3D(1, 2.79397e-09, -1.49012e-07, 0, 0.999841, -0.0178537, 0, 0.0178538, 0.999841, 0, 0, 0)
@@ -489,7 +489,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.12185, 0)
 curve = SubResource("Curve3D_2mae4")
 
 [node name="PathFollow3D" parent="MovingPlatform2/Path3D" index="0"]
-transform = Transform3D(-0.680669, -0.0567382, 0.730392, -1.86265e-09, 0.996996, 0.0774487, -0.732591, 0.0527168, -0.678625, 0.0145965, -0.00822759, 0.000934269)
+transform = Transform3D(0.680669, -0.0567382, -0.730392, 5.58793e-09, 0.996996, -0.0774487, 0.732591, 0.0527168, 0.678625, 0.0145965, -0.00822759, 0.000934269)
 
 [node name="MovingPlatform3" parent="." instance=ExtResource("22_nrq65")]
 transform = Transform3D(-0.87815, 0, 0.478385, 0, 1, 0, -0.478385, 0, -0.87815, 2.95499, 5.80262, -5.56083)

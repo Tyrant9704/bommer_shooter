@@ -55,7 +55,7 @@ func _fire():
 			if collider is RigidBody3D:
 				collider.apply_central_impulse(self.global_transform.basis * effect)
 			if collider and 'enemy' in collider.get_groups():
-				collider._health(20)
+				collider._health(35)
 			if collider and 'target' in collider.get_groups():
 				collider._target_hit()
 			else:

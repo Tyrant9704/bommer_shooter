@@ -75,7 +75,6 @@ func _process(delta):
 					$AnimationPlayer.play("l_fire")
 					_fire()
 					var case = shell.instantiate()
-					case.transform.origin = l_shell.transform.origin
 					get_tree().get_root().add_child(case)
 					case.global_transform.origin = l_shell.global_transform.origin
 					case.apply_central_impulse(self.global_transform.basis * case_v)
@@ -108,7 +107,7 @@ func _fire():
 			if collider is RigidBody3D:
 				collider.apply_central_impulse(self.global_transform.basis * effect)
 			if collider and 'enemy' in collider.get_groups():
-				collider._health(20)
+				collider._health(15)
 			if collider and 'target' in collider.get_groups():
 				collider._target_hit()
 			else:

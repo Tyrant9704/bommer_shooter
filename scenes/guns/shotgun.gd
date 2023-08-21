@@ -48,9 +48,7 @@ func _process(delta):
 			var recoil_r = Vector3(0, 0, -1)
 			shotgun.transform.origin = shotgun.transform.origin.lerp(shotgun.transform.origin + recoil_p, LERP * delta)
 			shotgun.rotation = shotgun.rotation.lerp(shotgun.rotation + recoil_r, LERP * delta)
-			
 			var shell = shotgun_shell.instantiate()
-			shell.transform.origin = port.transform.origin
 			get_tree().get_root().add_child(shell)
 			shell.global_transform.origin = port.global_transform.origin
 			shell.apply_central_impulse(self.global_transform.basis * shell_v)
@@ -83,7 +81,7 @@ func _fire():
 			if collider is RigidBody3D:
 				collider.apply_central_impulse(self.global_transform.basis * effect)
 			if collider and 'enemy' in collider.get_groups():
-				collider._health(20)
+				collider._health(16.6)
 			if collider and 'target' in collider.get_groups():
 				collider._target_hit()
 			else:

@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-
+class_name  player
 
 
 var speed = 0
@@ -69,7 +69,7 @@ var desired_weapon : String
 # temporary hardcoded!
 # nie powinnismy hardcodowac broni, beda zapewne do wyboru w jakims menu (przed startem gry w lobby / whatever)
 # beda pushowane do tej tablicy dynamicznie z UI lobby (guns menu or whtev)
-var weapons = ['M1911_normal', 'm1911_alt', 'spear', 'shotgun']
+var weapons = ['null', 'm1911_alt', 'spear', 'shotgun']
 
 
 
@@ -203,9 +203,6 @@ func _process(delta):
 		if GRENADE_THROW_FORCE < GRENADE_MAX_THROW_FORCE:
 			GRENADE_THROW_FORCE += delta * 16
 	
-	#anim_handler
-	global_script.player_pos = player_pos
-	global_script.player_state = player_state
 		
 	joint.global_transform.origin = hand.global_transform.origin
 	joint.rotation.y = lerp_angle(joint.rotation.y, rotation.y, sway * delta)
