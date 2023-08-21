@@ -1,4 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://0cydpygx01i3"]
+[gd_scene load_steps=11 format=3 uid="uid://3bf6ibwx36gr"]
+
+[ext_resource type="Script" path="res://scripts/shotgun_shell.gd" id="1_m7rcd"]
+[ext_resource type="AudioStream" uid="uid://dec5g3mmjge0o" path="res://assets/audio/12-gauge-shell-drop-47604.mp3" id="2_4phpy"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_f80v0"]
+bounce = 0.39
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jmaxe"]
 resource_name = "material_3"
@@ -79,19 +85,43 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_flnb8")
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8q161"]
-points = PackedVector3Array(-0.0608763, 0.980131, 0.974783, -0.0608763, -0.57343, -0.974783, -0.212734, -0.571868, -0.91188, 0.7071, -0.580688, 0.7071, 0.7071, 0.98739, -0.7071, -0.974783, 0.980131, 0.0608763, -0.706964, -0.580751, 0.707156, -0.706964, 0.987452, -0.707156, -0.974783, -0.57343, -0.0608763, 0.7071, -0.580688, -0.7071, 0.974783, 0.980131, 0.0608763, 0.7071, 0.98739, 0.7071, 0.974783, -0.57343, -0.0608763, 0.0608763, 0.980131, -0.974783, 0.0608763, -0.57343, 0.974783, -0.706964, 0.987452, 0.707156, -0.706964, -0.580751, -0.707156, -0.974783, 0.980131, -0.0608763, -0.974783, -0.57343, 0.0608763, 0.0608763, 0.980131, 0.974783, 0.0608763, -0.57343, -0.974783, 0.974783, 0.980131, -0.0608763, 0.974783, -0.57343, 0.0608763, -0.0608763, 0.980131, -0.974783, -0.0608763, -0.57343, 0.974783)
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_uusvg"]
+height = 0.079
+radius = 0.022
 
-[node name="Cylinder001_3" type="RigidBody3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.325, 0, 0, 0, 0.1, 0.00397575, -5.96046e-08, 0.0009619)
+[node name="shotgun_shell" type="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.00397575, -5.96046e-08, 0.0009619)
+top_level = true
+mass = 0.15
+inertia = Vector3(0.5, 0.5, 0.5)
+physics_material_override = SubResource("PhysicsMaterial_f80v0")
+continuous_cd = true
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_m7rcd")
 
 [node name="Object_11" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)
 mesh = SubResource("ArrayMesh_h1mkf")
 skeleton = NodePath("")
 
 [node name="Object_12" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.02, 0, 0, 0, 0.046, 0, 0, 0, 0.02, 0, 0.0138306, 0)
 mesh = SubResource("ArrayMesh_6xbm0")
 skeleton = NodePath("")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("ConvexPolygonShape3D_8q161")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.21791e-05, 0.0208652, -0.000772741)
+shape = SubResource("CylinderShape3D_uusvg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4phpy")
+max_polyphony = 10
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
