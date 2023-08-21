@@ -48,7 +48,6 @@ func _process(delta):
 			var recoil_r = Vector3(0, 0, -1)
 			shotgun.transform.origin = shotgun.transform.origin.lerp(shotgun.transform.origin + recoil_p, LERP * delta)
 			shotgun.rotation = shotgun.rotation.lerp(shotgun.rotation + recoil_r, LERP * delta)
-			
 			var shell = shotgun_shell.instantiate()
 			get_tree().get_root().add_child(shell)
 			shell.global_transform.origin = port.global_transform.origin
