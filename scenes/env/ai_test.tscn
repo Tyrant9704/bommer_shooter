@@ -99,4 +99,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.75309, 2.53199, -13.5277)
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_okmc0")
 
-[node name="Player" parent="." instance=ExtResource("4_c1ptr")]
